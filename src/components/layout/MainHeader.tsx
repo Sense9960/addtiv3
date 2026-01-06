@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Button, Flex, Space, Typography, Grid } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import MobileMenu from './MobileMenu';
@@ -36,11 +37,12 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
             <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
                 <Flex justify="space-between" align="center" style={{ height: 80 }}>
 
+
                     {/* LOGO */}
                     <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
-                            <div style={{ width: 32, height: 32, backgroundColor: '#d9d9d9' }} /> {/* Logo Placeholder */}
-                            <Typography.Text strong style={{ fontSize: 'clamp(14px, 4vw, 18px)', whiteSpace: 'nowrap', color: 'inherit' }}>
+                            <Image src="/logo/avatar.png" alt="Additiv3 Logo" width={32} height={32} />
+                            <Typography.Text strong style={{ fontSize: 'clamp(14px, 4vw, 18px)', whiteSpace: 'nowrap', color: '#111111' }}>
                                 ADDITIV3
                             </Typography.Text>
                         </div>

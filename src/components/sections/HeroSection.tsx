@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import React, { useRef } from 'react';
 import { Button, Col, Row, Typography, Space, Grid } from 'antd';
 import gsap from 'gsap';
@@ -93,7 +95,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                                 lineHeight: 1.1,
                                 fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
                                 fontWeight: 600,
-                                color: '#000000',
+                                color: '#111111',
                                 fontFamily: 'var(--font-inter)',
                                 marginBottom: 24
                             }}
@@ -115,7 +117,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                         </div>
 
                         <div className="hero-content-fade">
-                            <Paragraph style={{ fontSize: '1.1rem', color: '#4a4a4a', marginTop: 24, maxWidth: 480, marginInline: '0' }}>
+                            <Paragraph style={{ fontSize: '1.1rem', color: '#111111', marginTop: 24, maxWidth: 480, marginInline: '0' }}>
                                 High quality 3D manufacturing for teams that need functional parts,
                                 fast turnaround, and engineering grade materials with consistency they can trust.
                             </Paragraph>
@@ -131,19 +133,27 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                         </div>
                     </Col>
 
+
                     {/* IMAGE COLUMN */}
                     <Col xs={24} md={12}>
                         <div className="hero-content-fade" style={{
-                            backgroundColor: '#d9d9d9',
                             width: '100%',
-                            aspectRatio: '1/1',
-                            borderRadius: 4,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#8c8c8c'
                         }}>
-                            Image Placeholder (500x500)
+                            <Image
+                                src="/cover/LinkedIn cover.png"
+                                alt="Additiv3 Hero Cover"
+                                width={800}
+                                height={450}
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 4,
+                                    objectFit: 'cover'
+                                }}
+                            />
                         </div>
                     </Col>
 
