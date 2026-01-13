@@ -3,7 +3,7 @@ import type { ThemeConfig } from 'antd';
 const theme: ThemeConfig = {
     token: {
         fontSize: 16,
-        colorPrimary: '#0013DE',
+        colorPrimary: '#000000',
         colorTextBase: '#111111',
         fontFamily: 'var(--font-svn-gilroy)',
         borderRadius: 8,

@@ -95,7 +95,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                                 lineHeight: 1.1,
                                 fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
                                 fontWeight: 600,
-                                color: '#111111',
+                                color: 'var(--color-text-primary)',
                                 fontFamily: 'var(--font-inter)',
                                 marginBottom: 24
                             }}
@@ -117,7 +117,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                         </div>
 
                         <div className="hero-content-fade">
-                            <Paragraph style={{ fontSize: '1.1rem', color: '#111111', marginTop: 24, maxWidth: 480, marginInline: '0' }}>
+                            <Paragraph style={{ fontSize: '1.1rem', color: 'var(--color-text-primary)', marginTop: 24, maxWidth: 480, marginInline: '0' }}>
                                 High quality 3D manufacturing for teams that need functional parts,
                                 fast turnaround, and engineering grade materials with consistency they can trust.
                             </Paragraph>

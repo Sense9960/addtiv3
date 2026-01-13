@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { ConfigProvider } from "antd";
-import theme from "@/theme/themeConfig";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import "./globals.css";
 
@@ -45,14 +43,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={svnGilroy.variable}>
+    <html lang="en" className={svnGilroy.variable} suppressHydrationWarning>
       <body>
         <AntdRegistry>
-          <ConfigProvider theme={theme}>
-            <SmoothScrolling>
-              {children}
-            </SmoothScrolling>
-          </ConfigProvider>
+          <SmoothScrolling>
+            {children}
+          </SmoothScrolling>
         </AntdRegistry>
       </body>
     </html>
