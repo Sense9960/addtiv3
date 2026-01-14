@@ -43,7 +43,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
         { label: 'Start your Project', onClick: () => handleMenuClick(onStartProjectClick), primary: true },
     ];
 
-    const logoSrc = '/logo/avatar WB.png';
+    const logoSrc = '/logo/avatarWB.png';
 
     return (
         <header style={{ borderBottom: '1px solid #f0f0f0', backgroundColor: 'var(--background-color)', position: 'sticky', top: 0, zIndex: 1000, transition: 'background-color 0.3s ease' }}>
