@@ -7,6 +7,12 @@ const theme: ThemeConfig = {
         colorTextBase: '#111111',
         fontFamily: 'var(--font-svn-gilroy)',
         borderRadius: 8,
+        screenMD: 744,
+        screenMDMin: 744,
+        screenSMMax: 743,
+        screenXL: 1440,
+        screenXLMin: 1440,
+        screenLGMax: 1439,
     },
     components: {
         Button: {

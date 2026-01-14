@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { Flex, Typography } from 'antd';
+import { Flex, Typography, Grid } from 'antd';
 
 const HardwareIcon = '/trusted_icon/Lightbulb.svg';
 const RndIcon = '/trusted_icon/Board.svg';
@@ -26,40 +26,45 @@ const TrustSection: React.FC = () => {
                 </Paragraph>
 
                 {/* LOGO GRID */}
-                <Flex gap={24} style={{ width: '100%' }}>
+                <Flex gap={24} style={{ width: '100%' }} wrap="wrap">
                     {[
                         { icon: HardwareIcon, title: 'Hardware Startups' },
                         { icon: RndIcon, title: 'R&D Teams' },
                         { icon: ManufacturerIcon, title: 'Small Manufacturers' },
                         { icon: StudentIcon, title: 'Students' },
                         { icon: ProblemSolverIcon, title: 'Problem Solvers' },
-                    ].map((item, index) => (
-                        <div key={index} style={{
-                            flex: 1,
-                            backgroundColor: '#fff',
-                            borderRadius: '16px',
-                            padding: '32px 24px',
-                            textAlign: 'left',
-                            border: '1px solid #e0e0e0',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                            height: '220px'
-                        }}>
-                            <div>
-                                <Image
-                                    src={item.icon}
-                                    alt={item.title}
-                                    width={48}
-                                    height={48}
-                                    style={{ width: 'auto', height: '48px' }}
-                                />
+                    ].map((item, index) => {
+                        const screens = Grid.useBreakpoint();
+                        const isMobile = !screens.md; // < 744px
+
+                        return (
+                            <div key={index} style={{
+                                flex: isMobile ? '0 0 100%' : '1',
+                                backgroundColor: '#fff',
+                                borderRadius: '16px',
+                                padding: '32px 24px',
+                                textAlign: 'left',
+                                border: '1px solid #e0e0e0',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between',
+                                height: '220px'
+                            }}>
+                                <div>
+                                    <Image
+                                        src={item.icon}
+                                        alt={item.title}
+                                        width={48}
+                                        height={48}
+                                        style={{ width: 'auto', height: '48px' }}
+                                    />
+                                </div>
+                                <Title level={4} style={{ fontSize: '1.25rem', margin: 0 }}>
+                                    {item.title}
+                                </Title>
                             </div>
-                            <Title level={4} style={{ fontSize: '1.25rem', margin: 0 }}>
-                                {item.title}
-                            </Title>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </Flex>
 
             </div>

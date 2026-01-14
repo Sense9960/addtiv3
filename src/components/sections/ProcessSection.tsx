@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Card, Col, Row, Typography } from 'antd';
+import { Card, Col, Row, Typography, Grid } from 'antd';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -33,17 +33,22 @@ const steps: Step[] = [
     },
 ];
 
+const { useBreakpoint } = Grid;
+
 const ProcessSection: React.FC = () => {
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
+
     return (
         <section style={{ padding: '100px 24px', backgroundColor: '#fff' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-                <Row justify="space-between" style={{ marginBottom: 80 }}>
-                    <Col xs={24} md={8}>
+                <Row justify="space-between" style={{ marginBottom: 80 }} gutter={[0, 24]}>
+                    <Col xs={{ span: 24, order: 2 }} md={{ span: 8, order: 1 }}>
                         <Paragraph style={{ fontSize: '1.1rem', color: '#595959', marginTop: 8 }}>
                             A simple and efficient process designed to move projects from concept to delivered parts with clarity and speed.
                         </Paragraph>
                     </Col>
-                    <Col xs={24} md={12} style={{ textAlign: 'right' }}>
+                    <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 2 }} style={{ textAlign: isMobile ? 'left' : 'right' }}>
                         <Title level={2} style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', margin: 0, lineHeight: 1.1 }}>
                             How We Bring<br />Ideas to Life.
                         </Title>

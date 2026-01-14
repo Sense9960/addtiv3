@@ -86,11 +86,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, menuItems }) =
                             }}
                         />
 
-                        <Typography.Title level={2} style={{ marginBottom: 40, marginTop: 0 }}>
+                        <Typography.Title level={2} style={{ marginBottom: 40, marginTop: 0, textAlign: 'center' }}>
                             Additiv3
                         </Typography.Title>
 
-                        <Flex vertical gap="large" style={{ width: "100%", maxWidth: 300 }}>
+                        <Flex vertical gap="large" align="center" style={{ width: "100%", maxWidth: 300 }}>
                             {menuItems.map((item, index) => (
                                 <Button
                                     key={index}
