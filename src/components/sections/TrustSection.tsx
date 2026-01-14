@@ -1,46 +1,66 @@
 'use client';
-
 import React from 'react';
-import { Col, Row, Typography } from 'antd';
+import Image from 'next/image';
+import { Flex, Typography } from 'antd';
+
+const HardwareIcon = '/trusted_icon/Lightbulb.svg';
+const RndIcon = '/trusted_icon/Board.svg';
+const ManufacturerIcon = '/trusted_icon/Wrench.svg';
+const StudentIcon = '/trusted_icon/Student.svg';
+const ProblemSolverIcon = '/trusted_icon/Person.svg';
 
 const { Title, Paragraph } = Typography;
-
-// Style cho ô logo giả lập
-const logoBoxStyle: React.CSSProperties = {
-    backgroundColor: '#e0e0e0',
-    height: 140,
-    width: '100%',
-    borderRadius: 4,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#888'
-};
 
 const TrustSection: React.FC = () => {
     return (
         <section style={{ backgroundColor: '#f9f9f9', padding: '100px 24px' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto', textAlign: 'center' }}>
 
-                <Title level={2} style={{ fontSize: '2.2rem', marginBottom: 16 }}>
-                    Trusted by builders, <br className="mobile-break" /> engineers, & creators
+                <Title level={2} style={{ fontSize: '4rem', marginBottom: 16 }}>
+                    Trusted by builders, <br className="mobile-break" /> engineers, & creators.
                 </Title>
 
-                <Paragraph type="secondary" style={{ fontSize: '1rem', marginBottom: 60, maxWidth: 600, marginInline: 'auto' }}>
+                <Paragraph type="secondary" style={{ fontSize: '1.2rem', marginBottom: 60, maxWidth: 700, marginInline: 'auto' }}>
                     We support hardware startups, R&D teams, small manufacturers, students,
                     and everyday problem solvers who need reliable manufacturing partners.
                 </Paragraph>
 
                 {/* LOGO GRID */}
-                <Row gutter={[24, 24]} justify="center">
-                    {[1, 2, 3, 4].map((item) => (
-                        <Col xs={12} sm={12} md={6} key={item}>
-                            <div style={logoBoxStyle}>
-                                Logo {item}
+                <Flex gap={24} style={{ width: '100%' }}>
+                    {[
+                        { icon: HardwareIcon, title: 'Hardware Startups' },
+                        { icon: RndIcon, title: 'R&D Teams' },
+                        { icon: ManufacturerIcon, title: 'Small Manufacturers' },
+                        { icon: StudentIcon, title: 'Students' },
+                        { icon: ProblemSolverIcon, title: 'Problem Solvers' },
+                    ].map((item, index) => (
+                        <div key={index} style={{
+                            flex: 1,
+                            backgroundColor: '#fff',
+                            borderRadius: '16px',
+                            padding: '32px 24px',
+                            textAlign: 'left',
+                            border: '1px solid #e0e0e0',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            height: '220px'
+                        }}>
+                            <div>
+                                <Image
+                                    src={item.icon}
+                                    alt={item.title}
+                                    width={48}
+                                    height={48}
+                                    style={{ width: 'auto', height: '48px' }}
+                                />
                             </div>
-                        </Col>
+                            <Title level={4} style={{ fontSize: '1.25rem', margin: 0 }}>
+                                {item.title}
+                            </Title>
+                        </div>
                     ))}
-                </Row>
+                </Flex>
 
             </div>
         </section>

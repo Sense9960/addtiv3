@@ -24,7 +24,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
     const contentRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        // --- SETUP INTRO (Giữ nguyên logic cũ) ---
+        // --- SETUP INTRO ---
         const childSplitChars = new SplitText(".anim-chars", { type: "chars" });
         const childSplitLines = new SplitText(".anim-lines", { type: "lines" });
         const tl = gsap.timeline();
@@ -38,19 +38,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
         // --- 2. SCROLL EXIT ANIMATION (DÙNG MATCH MEDIA) ---
         let mm = gsap.matchMedia();
 
-        // A. KỊCH BẢN DESKTOP (Màn hình > 768px)
         mm.add("(min-width: 768px)", () => {
             gsap.to(contentRef.current, {
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: "top top", // Bắt đầu ngay khi chạm đỉnh (mượt từ đầu)
-                    end: "bottom center", // Kéo dài hành trình ra cho mượt
+                    start: "top top",
+                    end: "bottom center",
                     scrub: true,
                 },
-                y: -150, // Bay lên cao (Parallax mạnh)
+                y: -150,
                 opacity: 0,
                 scale: 0.95,
-                filter: "blur(10px)", // Blur mạnh (User desktop thích cái này)
+                filter: "blur(10px)",
                 ease: "none"
             });
         });
@@ -88,12 +87,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                             Additiv3 — Where Ideas Become Real Things.
                         </h1>
 
-                        {/* VISUAL TITLE */}
                         <div
                             style={{
                                 margin: 0,
                                 lineHeight: 1.1,
-                                fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+                                fontSize: 'clamp(2rem, 5vw, 4rem)',
                                 fontWeight: 600,
                                 color: 'var(--color-text-primary)',
                                 fontFamily: 'var(--font-inter)',
@@ -102,32 +100,26 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                             aria-hidden="true"
                         >
                             <span style={{ fontSize: '1.3em', display: 'block', marginBottom: 8 }}>
-                                <span className="anim-chars" style={{ display: 'inline-block' }}>
-                                    Additiv3
-                                </span>
-                                <span className="anim-dash" style={{ display: 'inline-block', marginLeft: 15 }}>
-                                    —
-                                </span>
                             </span>
                             <div style={{ perspective: '500px' }}>
                                 <div className="anim-lines">
-                                    Where Ideas Become <br /> Real Things.
+                                    Where Ideas Become <br /> <span style={{ color: '#0013DE' }}>Real Things.</span>
                                 </div>
                             </div>
                         </div>
 
                         <div className="hero-content-fade">
-                            <Paragraph style={{ fontSize: '1.1rem', color: 'var(--color-text-primary)', marginTop: 24, maxWidth: 480, marginInline: '0' }}>
+                            <Paragraph style={{ fontSize: '1.1rem', color: '#898989', marginTop: 24, maxWidth: 480, marginInline: '0' }}>
                                 High quality 3D manufacturing for teams that need functional parts,
                                 fast turnaround, and engineering grade materials with consistency they can trust.
                             </Paragraph>
 
                             <Space size="middle" wrap style={{ marginTop: 24, justifyContent: 'start', width: '100%' }}>
-                                <Button type="primary" size="large" onClick={onStartProjectClick}>
-                                    Start your Project
-                                </Button>
                                 <Button size="large" onClick={onViewCapabilitiesClick}>
                                     View Capabilities
+                                </Button>
+                                <Button type="primary" size="large" onClick={onStartProjectClick}>
+                                    Start your Project
                                 </Button>
                             </Space>
                         </div>

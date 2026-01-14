@@ -50,10 +50,6 @@ export default function Home() {
         <ProcessSection />
       </div>
 
-      <div id="materials">
-        <MaterialsSection />
-      </div>
-
       <div id="cta">
         <FinalCTASection onContactClick={() => setIsContactModalOpen(true)} />
       </div>

@@ -16,7 +16,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const [form] = Form.useForm();
     const [messageApi, contextHolder] = message.useMessage();
 
-    // Vẫn dùng hook này để tối ưu nội dung bên trong (font chữ, padding...)
     const screens = useBreakpoint();
     const isMobile = !screens.md;
 
@@ -33,13 +32,9 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         <MotionModal
             isOpen={isOpen}
             onClose={onClose}
-            // SỬA LẠI: Đặt cố định 800 giống FAQModal. 
-            // Ant Design sẽ tự động thêm max-width trên mobile nên không lo bị tràn.
             width={800}
         >
             {contextHolder}
-
-            {/* Vẫn giữ logic giảm padding để nội dung bên trong thoáng hơn trên mobile */}
             <div style={{ padding: isMobile ? '0' : '24px 0' }}>
 
                 <div style={{ textAlign: 'center', marginBottom: isMobile ? 20 : 32 }}>
