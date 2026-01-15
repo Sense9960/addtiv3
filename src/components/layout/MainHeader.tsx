@@ -80,7 +80,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
                                 <Button type="text" icon={<MenuOutlined />} onClick={showDrawer} />
                             </Space>
                         ) : (
-                            <Button type="primary" style={{ fontWeight: 500, height: '51px', width: '204px', borderRadius: '12px' }} onClick={onStartProjectClick}>
+                            <Button type="primary" style={{ fontWeight: 500, height: '51px', width: '204px', borderRadius: '12px', backgroundColor: '#0013DE', border: 'none', boxShadow: 'none' }} onClick={onStartProjectClick}>
                                 Start Your Project
                             </Button>
                         )}

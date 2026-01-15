@@ -118,8 +118,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                                 <Button size="large" onClick={onViewCapabilitiesClick}>
                                     View Capabilities
                                 </Button>
-                                <Button type="primary" size="large" onClick={onStartProjectClick}>
-                                    Start your Project
+                                <Button type="primary" size="large" onClick={onStartProjectClick} style={{ backgroundColor: '#0013DE', border: 'none', boxShadow: 'none' }}>
+                                    Start Your Project
                                 </Button>
                             </Space>
                         </div>
