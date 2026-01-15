@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { Flex, Typography, Grid } from 'antd';
+import { Flex, Typography, Grid, Row, Col } from 'antd';
 
 const HardwareIcon = '/trusted_icon/Lightbulb.svg';
 const RndIcon = '/trusted_icon/Board.svg';
@@ -12,6 +12,9 @@ const ProblemSolverIcon = '/trusted_icon/Person.svg';
 const { Title, Paragraph } = Typography;
 
 const TrustSection: React.FC = () => {
+    const screens = Grid.useBreakpoint();
+    const isMobile = !screens.md; // < 744px
+
     return (
         <section style={{ backgroundColor: '#f9f9f9', padding: '100px 24px' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto', textAlign: 'center' }}>
@@ -25,8 +28,7 @@ const TrustSection: React.FC = () => {
                     and everyday problem solvers who need reliable manufacturing partners.
                 </Paragraph>
 
-                {/* LOGO GRID */}
-                <Flex gap={24} style={{ width: '100%' }} wrap="wrap">
+                <Row gutter={[24, 24]} justify="center">
                     {[
                         { icon: HardwareIcon, title: 'Hardware Startups' },
                         { icon: RndIcon, title: 'R&D Teams' },
@@ -34,38 +36,38 @@ const TrustSection: React.FC = () => {
                         { icon: StudentIcon, title: 'Students' },
                         { icon: ProblemSolverIcon, title: 'Problem Solvers' },
                     ].map((item, index) => {
-                        const screens = Grid.useBreakpoint();
-                        const isMobile = !screens.md; // < 744px
-
                         return (
-                            <div key={index} style={{
-                                flex: isMobile ? '0 0 100%' : '1',
-                                backgroundColor: '#fff',
-                                borderRadius: '16px',
-                                padding: '32px 24px',
-                                textAlign: 'left',
-                                border: '1px solid #e0e0e0',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'space-between',
-                                height: '220px'
-                            }}>
-                                <div>
-                                    <Image
-                                        src={item.icon}
-                                        alt={item.title}
-                                        width={48}
-                                        height={48}
-                                        style={{ width: 'auto', height: '48px' }}
-                                    />
+                            <Col key={index} flex={isMobile ? '100%' : '20%'} style={{ display: 'flex' }}>
+                                <div style={{
+                                    width: '100%',
+                                    backgroundColor: '#fff',
+                                    borderRadius: '16px',
+                                    padding: '24px',
+                                    textAlign: 'left',
+                                    border: '1px solid #e6e6e6',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                    minHeight: isMobile ? 'auto' : '220px',
+                                    gap: isMobile ? '24px' : '0'
+                                }}>
+                                    <div>
+                                        <Image
+                                            src={item.icon}
+                                            alt={item.title}
+                                            width={48}
+                                            height={48}
+                                            style={{ width: 'auto', height: isMobile ? '40px' : '48px' }}
+                                        />
+                                    </div>
+                                    <Title level={4} style={{ fontSize: isMobile ? '1.25rem' : '1.25rem', margin: 0 }}>
+                                        {item.title}
+                                    </Title>
                                 </div>
-                                <Title level={4} style={{ fontSize: '1.25rem', margin: 0 }}>
-                                    {item.title}
-                                </Title>
-                            </div>
+                            </Col>
                         );
                     })}
-                </Flex>
+                </Row>
 
             </div>
         </section>
