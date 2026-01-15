@@ -37,6 +37,29 @@ const svnGilroy = localFont({
 export const metadata: Metadata = {
   title: "Additiv3 - 3D Manufacturing",
   description: "High quality 3D manufacturing for teams.",
+  keywords: [
+    "3D printing",
+    "3D manufacturing",
+    "rapid prototyping",
+    "Additiv3",
+    "in 3D giá rẻ",
+    "gia công in 3D"
+  ],
+  openGraph: {
+    title: "Additiv3 - 3D Manufacturing",
+    description: "High quality 3D manufacturing for teams.",
+    url: 'https://additiv3.com',
+    siteName: 'Additiv3',
+    images: [
+      {
+        url: '/cover/LinkedInCover.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
