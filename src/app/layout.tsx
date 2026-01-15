@@ -37,11 +37,6 @@ const svnGilroy = localFont({
 export const metadata: Metadata = {
   title: "Additiv3 - 3D Manufacturing",
   description: "High quality 3D manufacturing for teams.",
-  icons: {
-    icon: '/icon.png',
-    shortcut: '/icon.png',
-    apple: '/icon.png',
-  },
 };
 
 export default function RootLayout({
