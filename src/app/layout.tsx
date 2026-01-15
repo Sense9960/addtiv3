@@ -38,12 +38,21 @@ export const metadata: Metadata = {
   title: "Additiv3 - 3D Manufacturing",
   description: "High quality 3D manufacturing for teams.",
   keywords: [
-    "3D printing",
-    "3D manufacturing",
+    // --- Tiếng Anh (Cho Google Mỹ & Khách Tây) ---
+    "3D printing service USA",
+    "additive manufacturing",
     "rapid prototyping",
-    "Additiv3",
+    "batch production",
+
+    // --- Tiếng Việt (Cho Khách Việt tìm kiếm) ---
     "in 3D giá rẻ",
-    "gia công in 3D"
+    "gia công in 3D",
+    "dịch vụ in 3D",
+    "thiết kế in 3D",
+
+    // --- Từ khóa ngách (Đánh trúng tâm lý đồng hương) ---
+    "vietnamese 3d printing", // Khách Tây muốn tìm đối tác Việt cũng search cái này
+    "in 3D người việt tại mỹ"
   ],
   openGraph: {
     title: "Additiv3 - 3D Manufacturing",
