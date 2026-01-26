@@ -135,7 +135,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                             justifyContent: 'center',
                         }}>
                             <Image
-                                src="/cover/LinkedIn cover.png"
+                                src="/cover/LinkedInCover.png"
                                 alt="Additiv3 Hero Cover"
                                 width={800}
                                 height={450}

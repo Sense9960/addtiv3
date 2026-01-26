@@ -15,17 +15,43 @@ interface ContactModalProps {
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const [form] = Form.useForm();
     const [messageApi, contextHolder] = message.useMessage();
+    const [loading, setLoading] = React.useState(false);
 
     const screens = useBreakpoint();
     const isMobile = !screens.md;
 
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
-        messageApi.success('Thank you for contacting us! We will get back to you shortly.');
-        form.resetFields();
-        setTimeout(() => {
-            onClose();
-        }, 1500);
+    const onFinish = async (values: any) => {
+        setLoading(true);
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                // Handle object errors from Resend
+                const errorMessage = typeof data.error === 'object'
+                    ? JSON.stringify(data.error)
+                    : data.error || 'Failed to send message';
+                throw new Error(errorMessage);
+            }
+
+            messageApi.success('Thank you for contacting us! We will get back to you shortly.');
+            form.resetFields();
+            setTimeout(() => {
+                onClose();
+            }, 1500);
+        } catch (error) {
+            console.error('Failed to send email:', error);
+            messageApi.error('Failed to send message. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -103,8 +129,14 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     </Form.Item>
 
                     <Form.Item style={{ textAlign: 'center', marginTop: 24, marginBottom: 0 }}>
-                        <Button type="primary" htmlType="submit" size="large" style={{ padding: '0 40px', height: 48, width: isMobile ? '100%' : 'auto' }}>
-                            Send Message
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            size="large"
+                            loading={loading}
+                            style={{ padding: '0 40px', height: 48, width: isMobile ? '100%' : 'auto' }}
+                        >
+                            {loading ? 'Sending...' : 'Send Message'}
                         </Button>
                     </Form.Item>
                 </Form>
