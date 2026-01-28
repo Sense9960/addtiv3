@@ -16,7 +16,7 @@ export async function POST(request: Request) {
         }
 
         const data = await resend.emails.send({
-            from: 'Additiv3 <onboarding@resend.dev>',
+            from: 'Additiv3 <admin@additiv3.com>',
             to: ['admin@additiv3.com', 'huyduc1704@gmail.com'],
             subject: `New Contact from ${name}: ${subject}`,
             replyTo: email,
