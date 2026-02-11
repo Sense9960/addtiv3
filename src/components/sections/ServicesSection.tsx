@@ -131,14 +131,14 @@ const ServicesSection: React.FC = () => {
 
                     {/* TITLE */}
                     <div style={{ flex: '2 1 600px', opacity: 0 }} className="service-header-anim">
-                        <Title level={2} style={{
+                        <Title level={2} className="text-black-force" style={{
                             fontSize: 'clamp(2rem, 4vw, 4rem)',
                             margin: 0,
                             lineHeight: 1.1,
                             fontWeight: 600,
                             textTransform: 'uppercase'
                         }}>
-                            Manufacturing <br /> Built for <br /> Real World Use
+                            Manufacturing <br /> Built for <br /> Real World Use.
                         </Title>
                     </div>
 

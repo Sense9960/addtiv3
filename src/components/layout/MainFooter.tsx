@@ -46,7 +46,7 @@ const MainFooter: React.FC = () => {
                             <span style={{ fontSize: '32px', fontWeight: 600, verticalAlign: 'middle', fontFamily: 'var(--font-inter)' }}>Additiv3</span>
                         </div>
                         <Text style={{ fontSize: '18px', color: '#888', maxWidth: '300px', display: 'block', lineHeight: 1.5 }}>
-                            Bringing your ideas to life<br />with precision 3D<br />manufacturing.
+                            Your Additive<br />Manufacturing and Rapid<br />Prototyping Partner.
                         </Text>
                     </Col>
 

@@ -59,7 +59,7 @@ const ProcessSection: React.FC = () => {
                     {steps.map((item, index) => (
                         <Col xs={24} md={6} key={index}>
                             <Card variant="borderless" style={{ height: '100%', boxShadow: 'none', textAlign: 'left', borderRadius: 16, border: '1px solid #e6e6e6', padding: '12px 0' }}>
-                                <Text strong style={{ fontSize: isMobile ? '3rem' : '4rem', color: '#000', display: 'block', lineHeight: 1, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>
+                                <Text strong style={{ fontSize: isMobile ? '3rem' : '4rem', color: '#0014E6', display: 'block', lineHeight: 1, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>
                                     {item.step}
                                 </Text>
                                 <Title level={4} style={{ marginTop: 0, borderBottom: '1px solid #e6e6e6', paddingBottom: 24, marginBottom: 24, fontSize: isMobile ? '1.25rem' : '1.5rem' }}>{item.title}</Title>

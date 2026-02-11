@@ -1,12 +1,12 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M36 8H12C9.79086 8 8 9.79086 8 12V36C8 38.2091 9.79086 40 12 40H36C38.2091 40 40 38.2091 40 36V12C40 9.79086 38.2091 8 36 8Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M28 18H20C18.8954 18 18 18.8954 18 20V28C18 29.1046 18.8954 30 20 30H28C29.1046 30 30 29.1046 30 28V20C30 18.8954 29.1046 18 28 18Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M30 4V8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M30 40V44" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4 30H8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4 18H8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M40 30H44" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M40 18H44" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18 4V8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18 40V44" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M36 8H12C9.79086 8 8 9.79086 8 12V36C8 38.2091 9.79086 40 12 40H36C38.2091 40 40 38.2091 40 36V12C40 9.79086 38.2091 8 36 8Z" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 18H20C18.8954 18 18 18.8954 18 20V28C18 29.1046 18.8954 30 20 30H28C29.1046 30 30 29.1046 30 28V20C30 18.8954 29.1046 18 28 18Z" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30 4V8" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30 40V44" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4 30H8" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4 18H8" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40 30H44" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40 18H44" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 4V8" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 40V44" stroke="#0014E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

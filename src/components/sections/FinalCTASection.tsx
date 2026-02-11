@@ -16,7 +16,7 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onContactClick }) => 
     return (
         <section style={{
             padding: isMobile ? '60px 20px' : '100px 24px',
-            backgroundColor: '#000',
+            background: 'radial-gradient(circle at center 20%, #000000 0%, #000000 30%, #000FAC 60%, #0014E6 85%, #1724EB 100%)',
             textAlign: 'center'
         }}>
             <div style={{ maxWidth: 800, margin: '0 auto' }}>
@@ -46,8 +46,10 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onContactClick }) => 
                             fontSize: '18px',
                             fontWeight: 600,
                             borderRadius: '12px',
-                            color: '#000', backgroundColor: '#fff',
-                            border: 'none', display: 'flex',
+                            color: '#000',
+                            backgroundColor: '#fff',
+                            border: 'none',
+                            display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             gap: '8px'
