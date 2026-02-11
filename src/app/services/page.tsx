@@ -29,7 +29,7 @@ export default function ServicesPage() {
             <div style={{ maxWidth: 1280, margin: '0 auto', padding: '60px 24px 100px' }}>
 
                 {/* --- FDM SECTION --- */}
-                <section style={{ marginBottom: 120 }}>
+                <section id="fdm" style={{ marginBottom: 120, scrollMarginTop: '100px' }}>
                     <Title level={1} style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: 40, textAlign: 'center', fontWeight: 600 }}>
                         FDM (Fused Deposition Modeling)
                     </Title>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
 
 
                 {/* --- SLA SECTION --- */}
-                <section style={{ marginBottom: 120 }}>
+                <section id="sla" style={{ marginBottom: 120, scrollMarginTop: '100px' }}>
                     <Title level={1} style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: 40, textAlign: 'center', fontWeight: 600 }}>
                         SLA (Stereolithography)
                     </Title>
@@ -119,7 +119,7 @@ export default function ServicesPage() {
                 </section>
 
                 {/* --- HEAT SET SECTION --- */}
-                <section style={{ marginBottom: 120 }}>
+                <section id="heat-set" style={{ marginBottom: 120, scrollMarginTop: '100px' }}>
                     <Title level={1} style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: 40, textAlign: 'center', fontWeight: 600 }}>
                         Heat Set Inserts Installation
                     </Title>
@@ -164,7 +164,7 @@ export default function ServicesPage() {
 
 
                 {/* --- DESIGN SECTION --- */}
-                <section>
+                <section id="design" style={{ scrollMarginTop: '100px' }}>
                     <div style={{ maxWidth: 800, margin: '0 auto' }}>
                         <Title level={1} style={{ fontSize: 'clamp(3rem, 5vw, 4rem)', marginBottom: 20, textAlign: 'left', fontWeight: 600 }}>
                             Design

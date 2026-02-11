@@ -29,6 +29,7 @@ export default function Home() {
         onFAQClick={() => setIsFAQModalOpen(true)}
         onContactClick={() => setIsContactModalOpen(true)}
         onStartProjectClick={() => scrollToSection('cta')}
+        onServicesClick={() => scrollToSection('services')}
       />
 
       <div id="hero">

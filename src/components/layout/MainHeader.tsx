@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Button, Flex, Space, Typography, Grid } from 'antd';
-import { MenuOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons';
+import { Button, Flex, Space, Typography, Grid, Dropdown, MenuProps } from 'antd';
+import { MenuOutlined, MoonOutlined, SunOutlined, DownOutlined } from '@ant-design/icons';
 import { useTheme } from 'next-themes';
 import MobileMenu from './MobileMenu';
 import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
+import { useLenis } from '../SmoothScrolling';
 
 const { useBreakpoint } = Grid;
 
@@ -20,6 +22,9 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
     const isMobile = !screens.md;
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const { theme, setTheme, resolvedTheme } = useTheme();
+    const router = useRouter();
+    const pathname = usePathname();
+    const lenis = useLenis();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => setMounted(true), []);
@@ -35,6 +40,29 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
         closeDrawer();
         if (action) action();
     };
+
+    const handleServiceClick = (hash: string) => {
+        if (pathname === '/services') {
+            lenis?.scrollTo(`#${hash}`);
+        } else {
+            router.push(`/services#${hash}`);
+        }
+    };
+
+    const handleMainServiceClick = () => {
+        if (pathname === '/services') {
+            lenis?.scrollTo(0);
+        } else {
+            router.push('/services');
+        }
+    };
+
+    const serviceList = [
+        { label: 'FDM (Fused Deposition Modeling)', onClick: () => handleServiceClick('fdm') },
+        { label: 'SLA (Stereolithography)', onClick: () => handleServiceClick('sla') },
+        { label: 'Heat Set Inserts Installation', onClick: () => handleServiceClick('heat-set') },
+        { label: 'Design', onClick: () => handleServiceClick('design') },
+    ];
 
     const menuItems = [
         { label: 'Services', onClick: () => handleMenuClick(() => window.location.href = '/services') },
@@ -64,13 +92,58 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
                         </Link>
 
                         {!isMobile && (
-                            <div style={{ display: 'flex', gap: '8px' }}>
-                                <Link href="/services" style={{ textDecoration: 'none' }}>
-                                    <Button type='text' style={{ fontSize: '16px', fontWeight: 500 }}>Services</Button>
-                                </Link>
-                                <Link href="/materials" style={{ textDecoration: 'none' }}>
-                                    <Button type='text' style={{ fontSize: '16px', fontWeight: 500 }}>Materials</Button>
-                                </Link>
+                            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                <Dropdown
+                                    popupRender={(menu) => (
+                                        <div style={{
+                                            width: 284,
+                                            padding: 24,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: 32,
+                                            backgroundColor: 'var(--background-color)',
+                                            borderRight: '1px solid #f0f0f0',
+                                            borderBottom: '1px solid #f0f0f0',
+                                            borderLeft: '1px solid #f0f0f0',
+                                            boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                                        }}>
+                                            {serviceList.map((item, index) => (
+                                                <div
+                                                    key={index}
+                                                    onClick={item.onClick}
+                                                    style={{
+                                                        cursor: 'pointer',
+                                                        fontSize: '16px',
+                                                        fontWeight: 500,
+                                                        color: 'var(--color-text-primary)',
+                                                        transition: 'color 0.2s',
+                                                    }}
+                                                    onMouseEnter={(e) => e.currentTarget.style.color = '#0013DE'}
+                                                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
+                                                >
+                                                    {item.label}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                    placement="bottom"
+                                    arrow={false}
+                                >
+                                    <Button
+                                        type='text'
+                                        style={{ fontSize: '16px', fontWeight: 500 }}
+                                        onClick={handleMainServiceClick}
+                                    >
+                                        Services
+                                    </Button>
+                                </Dropdown>
+                                <Button
+                                    type='text'
+                                    style={{ fontSize: '16px', fontWeight: 500 }}
+                                    onClick={() => router.push('/materials')}
+                                >
+                                    Materials
+                                </Button>
                                 <Button type="text" onClick={onFAQClick} style={{ fontSize: '16px', fontWeight: 500 }}>FAQ</Button>
                             </div>
                         )}
