@@ -35,41 +35,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
         tl.from(".hero-content-fade", { y: 30, opacity: 0, duration: 0.8, stagger: 0.1 }, "-=0.8");
 
 
-        // --- 2. SCROLL EXIT ANIMATION (DÙNG MATCH MEDIA) ---
-        let mm = gsap.matchMedia();
 
-        mm.add("(min-width: 768px)", () => {
-            gsap.to(contentRef.current, {
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top top",
-                    end: "bottom center",
-                    scrub: true,
-                },
-                y: -150,
-                opacity: 0,
-                scale: 0.95,
-                filter: "blur(10px)",
-                ease: "none"
-            });
-        });
-
-        // B.MOBILE (Màn hình <= 767px)
-        mm.add("(max-width: 767px)", () => {
-            gsap.to(contentRef.current, {
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "40% top",
-                    end: "bottom center",
-                    scrub: true,
-                },
-                y: -50,
-                opacity: 0,
-                scale: 0.98,
-                filter: "blur(3px)",
-                ease: "none"
-            });
-        });
 
     }, { scope: containerRef });
 

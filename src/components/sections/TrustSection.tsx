@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { Flex, Typography, Grid, Row, Col } from 'antd';
+import { Typography, Grid, Row, Col } from 'antd';
 
 const HardwareIcon = '/trusted_icon/Lightbulb.svg';
 const RndIcon = '/trusted_icon/Board.svg';
@@ -13,7 +13,6 @@ const { Title, Paragraph } = Typography;
 
 const TrustSection: React.FC = () => {
     const screens = Grid.useBreakpoint();
-    const isMobile = !screens.md; // < 744px
 
     return (
         <section style={{ backgroundColor: '#f9f9f9', padding: '100px 24px' }}>
@@ -28,7 +27,7 @@ const TrustSection: React.FC = () => {
                     and everyday problem solvers who need reliable manufacturing partners.
                 </Paragraph>
 
-                <Row gutter={[24, 24]} justify="center">
+                <Row gutter={[24, 24]}>
                     {[
                         { icon: HardwareIcon, title: 'Hardware Startups' },
                         { icon: RndIcon, title: 'R&D Teams' },
@@ -37,7 +36,7 @@ const TrustSection: React.FC = () => {
                         { icon: ProblemSolverIcon, title: 'Problem Solvers' },
                     ].map((item, index) => {
                         return (
-                            <Col key={index} flex={isMobile ? '100%' : '20%'} style={{ display: 'flex' }}>
+                            <Col key={index} flex={screens.xl ? '20%' : screens.md ? '33.33%' : '100%'} style={{ display: 'flex' }}>
                                 <div style={{
                                     width: '100%',
                                     backgroundColor: '#fff',
@@ -48,8 +47,8 @@ const TrustSection: React.FC = () => {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'space-between',
-                                    minHeight: isMobile ? 'auto' : '220px',
-                                    gap: isMobile ? '24px' : '0'
+                                    minHeight: !screens.md ? 'auto' : '220px',
+                                    gap: !screens.md ? '24px' : '0'
                                 }}>
                                     <div>
                                         <Image
@@ -57,10 +56,10 @@ const TrustSection: React.FC = () => {
                                             alt={item.title}
                                             width={48}
                                             height={48}
-                                            style={{ width: 'auto', height: isMobile ? '40px' : '48px' }}
+                                            style={{ width: 'auto', height: !screens.md ? '40px' : '48px' }}
                                         />
                                     </div>
-                                    <Title level={4} style={{ fontSize: isMobile ? '1.25rem' : '1.25rem', margin: 0 }}>
+                                    <Title level={4} style={{ fontSize: !screens.md ? '1.25rem' : '1.25rem', margin: 0 }}>
                                         {item.title}
                                     </Title>
                                 </div>

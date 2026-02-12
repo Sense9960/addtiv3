@@ -1,36 +1,64 @@
 'use client';
 
 import React from 'react';
-import { Row, Col, Typography, Flex, Grid } from 'antd'; // 1. Import Flex thay vì Space
+import { Row, Col, Typography, Flex, Grid } from 'antd';
 import { LinkedinFilled, FacebookFilled, InstagramFilled, TikTokOutlined, LinkedinOutlined, InstagramOutlined } from '@ant-design/icons';
 import Image from 'next/image';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import FAQModal from '../sections/FAQSection';
+import ContactModal from '../sections/ContactSection';
+
 const { useBreakpoint } = Grid;
 
 const { Text, Link } = Typography;
 
 const MainFooter: React.FC = () => {
     const screens = useBreakpoint();
+    const router = useRouter();
     const isMobile = !screens.md;
+
+    const [faqOpen, setFaqOpen] = useState(false);
+    const [contactOpen, setContactOpen] = useState(false);
+
+    const handleLinkClick = (key: string) => {
+        switch (key) {
+            case 'materials':
+                router.push('/materials');
+                break;
+            case 'services':
+                router.push('/services');
+                break;
+            case 'about':
+                // Future implementation
+                break;
+            case 'faq':
+                setFaqOpen(true);
+                break;
+            case 'contact':
+            case 'quote':
+                setContactOpen(true);
+                break;
+            default:
+                break;
+        }
+    };
 
     const footerLinks = {
         home: [
-            { label: 'About Us', href: '#' },
-            { label: 'Contact Us', href: '#' },
-            { label: 'FAQ', href: '#' },
+            { label: 'About Us', key: 'about' },
+            { label: 'Contact Us', key: 'contact' },
+            { label: 'FAQ', key: 'faq' },
         ],
         services: [
-            { label: 'Materials', href: '#' },
-            { label: 'Process', href: '#' },
-            { label: 'Get a Quote', href: '#' },
+            { label: 'Materials', key: 'materials' },
+            { label: 'Services', key: 'services' },
+            { label: 'Get a Quote', key: 'quote' },
         ],
-        followUs: [
-            { label: 'Materials', href: '#' },
-            { label: 'Process', href: '#' },
-            { label: 'Get a Quote', href: '#' },
-        ]
+
     };
 
-    const linkStyle = { color: '#888', fontSize: '16px', display: 'block', marginBottom: '8px' };
+    const linkStyle = { color: '#888', fontSize: '16px', display: 'block', marginBottom: '8px', cursor: 'pointer' };
     const titleStyle = { fontSize: '18px', fontWeight: 600, marginBottom: '24px' };
 
     return (
@@ -57,7 +85,7 @@ const MainFooter: React.FC = () => {
                                 <div style={titleStyle}>Home</div>
                                 <Flex vertical gap={8}>
                                     {footerLinks.home.map((link, index) => (
-                                        <Link key={index} href={link.href} style={linkStyle}>{link.label}</Link>
+                                        <Link key={index} onClick={() => handleLinkClick(link.key)} style={linkStyle}>{link.label}</Link>
                                     ))}
                                 </Flex>
                             </Col>
@@ -65,7 +93,7 @@ const MainFooter: React.FC = () => {
                                 <div style={titleStyle}>Services</div>
                                 <Flex vertical gap={8}>
                                     {footerLinks.services.map((link, index) => (
-                                        <Link key={index} href={link.href} style={linkStyle}>{link.label}</Link>
+                                        <Link key={index} onClick={() => handleLinkClick(link.key)} style={linkStyle}>{link.label}</Link>
                                     ))}
                                 </Flex>
                             </Col>
@@ -94,6 +122,9 @@ const MainFooter: React.FC = () => {
                     </Flex>
                 </div>
             </div>
+
+            <FAQModal isOpen={faqOpen} onClose={() => setFaqOpen(false)} />
+            <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
         </footer>
     );
 };

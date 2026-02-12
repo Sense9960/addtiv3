@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button, Flex, Space, Typography, Grid, Dropdown, MenuProps } from 'antd';
@@ -19,7 +21,13 @@ interface MainHeaderProps {
 
 const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onStartProjectClick, onServicesClick }) => {
     const screens = useBreakpoint();
-    const isMobile = !screens.md;
+    // Desktop view is 1200px+ (xl)
+    const isDesktop = !!screens.xl;
+    // Show Hamburger for tablet/mobile (<1200px)
+    const showHamburger = !isDesktop;
+    // Show CTA only on Desktop (moved to Hamburger menu for others)
+    const showCTA = isDesktop;
+
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const { theme, setTheme, resolvedTheme } = useTheme();
     const router = useRouter();
@@ -91,7 +99,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
                             </div>
                         </Link>
 
-                        {!isMobile && (
+                        {isDesktop && (
                             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                                 <Dropdown
                                     popupRender={(menu) => (
@@ -151,19 +159,15 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
 
                     {/* RIGHT GROUP: About Us + Contact + CTA */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                        {!isMobile && (
+                        {isDesktop && (
                             <>
                                 <Button type='text' style={{ fontSize: '16px', fontWeight: 500 }}>About Us</Button>
                                 <Button type="text" onClick={onContactClick} style={{ fontSize: '16px', fontWeight: 500 }}>Contact us</Button>
                             </>
                         )}
 
-                        {isMobile ? (
-                            <Space>
-                                <Button type="text" icon={<MoonOutlined />} onClick={toggleTheme} />
-                                <Button type="text" icon={<MenuOutlined />} onClick={showDrawer} />
-                            </Space>
-                        ) : (
+                        {/* CTA Button - Visible on Desktop and Tablet (sm+) */}
+                        {showCTA && (
                             <Button type="primary" style={{
                                 fontWeight: 600,
                                 height: '44px',
@@ -176,6 +180,15 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
                             }} onClick={onStartProjectClick}>
                                 Start your Project
                             </Button>
+                        )}
+
+                        {/* Hamburger Icon - Visible on Tablet/Mobile */}
+                        {showHamburger && (
+                            <Space>
+                                {/* Theme Toggle Hidden as per request */}
+                                {/* <Button type="text" icon={<MoonOutlined />} onClick={toggleTheme} /> */}
+                                <Button type="text" icon={<MenuOutlined />} onClick={showDrawer} />
+                            </Space>
                         )}
                     </div>
 
