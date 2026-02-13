@@ -16,7 +16,7 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onContactClick }) => 
     return (
         <section style={{
             padding: isMobile ? '60px 20px' : '100px 24px',
-            background: 'radial-gradient(circle at center 20%, #000000 0%, #000000 30%, #000FAC 60%, #0014E6 85%, #1724EB 100%)',
+            background: 'radial-gradient(103.77% 117.58% at 50% 0%, #000000 0%, #000000 44.71%, #000FAD 78.37%, #0014E6 88.63%, #1724EB 90.43%)',
             textAlign: 'center'
         }}>
             <div style={{ maxWidth: 800, margin: '0 auto' }}>

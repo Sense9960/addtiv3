@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import React, { useRef } from 'react';
 import { Button, Col, Row, Typography, Space, Grid } from 'antd';
@@ -15,10 +16,11 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 
 interface HeroSectionProps {
     onStartProjectClick?: () => void;
-    onViewCapabilitiesClick?: () => void;
+    onViewServicesClick?: () => void;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCapabilitiesClick }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewServicesClick }) => {
+    const router = useRouter();
     const screens = useBreakpoint();
     const containerRef = useRef<HTMLElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -81,8 +83,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewCa
                             </Paragraph>
 
                             <Space size="middle" wrap style={{ marginTop: 24, justifyContent: 'start', width: '100%' }}>
-                                <Button size="large" onClick={onViewCapabilitiesClick}>
-                                    View Capabilities
+                                <Button size="large" onClick={() => router.push('/services')}>
+                                    View Services
                                 </Button>
                                 <Button type="primary" size="large" onClick={onStartProjectClick} style={{ backgroundColor: '#0013DE', border: 'none', boxShadow: 'none' }}>
                                     Start Your Project

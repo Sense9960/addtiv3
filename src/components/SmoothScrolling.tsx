@@ -56,7 +56,7 @@ function SmoothScrollingContent({ children }: { children: React.ReactNode }) {
                 const target = document.querySelector(hash) as HTMLElement;
                 if (target) {
                     lenis.scrollTo(target, {
-                        offset: 0,
+                        offset: -100,
                         duration: 1.5,
                         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                     });
@@ -86,7 +86,7 @@ function SmoothScrollingContent({ children }: { children: React.ReactNode }) {
                 // Use a slight delay to ensure content is ready
                 setTimeout(() => {
                     lenisRef.scrollTo(target, {
-                        offset: 0,
+                        offset: -100,
                         duration: 1.5,
                         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                         immediate: false, // Ensure it animates

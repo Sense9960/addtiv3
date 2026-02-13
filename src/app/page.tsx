@@ -34,7 +34,6 @@ export default function Home() {
 
       <div id="hero">
         <HeroSection
-          onViewCapabilitiesClick={() => scrollToSection('materials')}
           onStartProjectClick={() => scrollToSection('cta')}
         />
       </div>

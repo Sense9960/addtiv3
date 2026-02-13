@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Typography, Row, Col, Space, Divider, Flex } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import MainHeader from '@/components/layout/MainHeader';
@@ -37,35 +38,36 @@ export default function ServicesPage() {
                     <div style={{ maxWidth: 800, margin: '0 auto' }}>
                         <Row gutter={[48, 48]}>
                             <Col xs={24} md={24}>
-                                <Title level={4}>What it is</Title>
-                                <Paragraph type="secondary" style={{ fontSize: '1.1rem' }}>
-                                    Fused Deposition Modeling is an additive manufacturing process where thermoplastic filament is melted and pushed through an extruder nozzle, building parts layer by layer according to a computer model.
+                                <Title level={4} style={{ fontSize: 20 }}>What it is</Title>
+                                <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                                    FDM (Fused Deposition Modeling) is an additive manufacturing process where thermoplastic filament is melted and precisely deposited through a heated nozzle, forming parts layer by layer directly from a digital model.
                                 </Paragraph>
 
-                                <Title level={4} style={{ marginTop: 32 }}>What it is usually used for</Title>
-                                <Paragraph type="secondary" style={{ fontSize: '1.1rem' }}>
-                                    Functional prototyping, mechanical parts, enclosures, brackets, jigs and fixtures, housings, and low-mid volume production parts where strength, heat resistance, or chemical resistance are required.
+                                <Title level={4} style={{ marginTop: 32, fontSize: 20 }}>What it is usually used for</Title>
+                                <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                                    Functional prototyping, mechanical parts, enclosures, brackets, jigs and fixtures, housings, and low to mid volume production parts where strength, heat resistance, or chemical resistance are required.
                                 </Paragraph>
                             </Col>
 
                             <Col xs={24} md={24}>
-                                <div style={{ borderTop: '2px solid #0013DE', paddingTop: 16 }}>
+                                <div style={{ borderTop: '2px solid #e6e6e6', paddingTop: 16 }}>
                                     <Flex justify="space-between" align="center" style={{ marginBottom: 16 }}>
-                                        <Title level={4} style={{ margin: 0 }}>Available materials</Title>
+                                        <Title level={4} style={{ margin: 0, fontSize: 20 }}>Available materials</Title>
                                         <div style={{ width: 20, height: 2, background: '#0013DE' }}></div>
                                     </Flex>
-                                    <Paragraph type="secondary">
-                                        PLA, basic prototyping, aesthetic parts, architectural models. PETG, printing
-                                        Functional, durable parts. Properties covering electrical specifications, specialized
-                                        conductive, or high strength cosmetic applications. Nylon, reinforced
-                                        nylon, and carbon fiber.
+                                    <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                                        We offer a range of engineering and general purpose materials for FDM printing.
+                                    </Paragraph>
+                                    <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                                        For detailed material properties, advantages, and technical specifications, please visit our <Link href="/materials" style={{ color: '#0013DE', textDecoration: 'underline' }}>Materials</Link> page. If you do not see a material listed that fits your application, feel free to inquire about specific materials.
                                     </Paragraph>
                                 </div>
 
                                 <div style={{ borderTop: '1px solid #e6e6e6', paddingTop: 16, marginTop: 32 }}>
-                                    <Title level={4} style={{ fontSize: '1.1rem' }}>Maximum print volume</Title>
-                                    <Text type="secondary">Up to 300 x 300 x 300 mm per part</Text>
+                                    <Title level={4} style={{ fontSize: 20 }}>Maximum print volume</Title>
+                                    <Text type="secondary" style={{ fontSize: 16 }}>Up to 258 x 258 x 240 mm per part.</Text>
                                 </div>
+                                <div style={{ borderTop: '1px solid #e6e6e6', paddingTop: 16, marginTop: 32 }}></div>
                             </Col>
                         </Row>
                     </div>
@@ -81,38 +83,35 @@ export default function ServicesPage() {
                     <div style={{ maxWidth: 800, margin: '0 auto' }}>
                         <Row gutter={[48, 48]}>
                             <Col xs={24} md={24}>
-                                <Title level={4}>What it is</Title>
-                                <Paragraph type="secondary" style={{ fontSize: '1.1rem' }}>
-                                    SLA (Stereolithography) is an additive manufacturing process that uses a controlled light source to solidify liquid photopolymer resin into a hard plastic part, offering high detail, smooth surface finish, and tight tolerances.
+                                <Title level={4} style={{ fontSize: 20 }}>What it is</Title>
+                                <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                                    SLA (Stereolithography) is an additive manufacturing process that uses a controlled light source to selectively cure liquid photopolymer resin into solid geometry, building parts layer by layer with high dimensional accuracy.
                                 </Paragraph>
 
-                                <Title level={4} style={{ marginTop: 32 }}>What it is usually used for</Title>
-                                <Paragraph type="secondary" style={{ fontSize: '1.1rem' }}>
-                                    High detail prototyping, presentation models, casting masters, small intricate components,
-                                    and parts requiring fine features and molds, dental or medical models.
+                                <Title level={4} style={{ marginTop: 32, fontSize: 20 }}>What it is usually used for</Title>
+                                <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                                    High detail prototypes, cosmetic models, snap fit testing, small enclosures, fluidic components, and parts requiring fine features, thin walls, or smooth surface finishes.
                                 </Paragraph>
                             </Col>
 
                             <Col xs={24} md={24}>
-                                <div style={{ borderTop: '2px solid #0013DE', paddingTop: 16 }}>
+                                <div style={{ borderTop: '2px solid #e6e6e6', paddingTop: 16 }}>
                                     <Flex justify="space-between" align="center" style={{ marginBottom: 16 }}>
-                                        <Title level={4} style={{ margin: 0 }}>Available materials</Title>
+                                        <Title level={4} style={{ margin: 0, fontSize: 20 }}>Available materials</Title>
                                         <div style={{ width: 20, height: 2, background: '#0013DE' }}></div>
                                     </Flex>
-                                    <Paragraph type="secondary">
-                                        Wide variety of <Text strong style={{ color: '#0013DE' }}>standard</Text> resins for general purpose, tough resin for strength,
-                                        and clear resin for transparency.
+                                    <Paragraph type="secondary" style={{ fontSize: 16 }}>
+                                        We currently offer <Text underline style={{ color: '#0013DE' }}>Formlabs</Text> general purpose resins, selected for their reliability, surface quality, and dimensional accuracy.
                                         <br /><br />
-                                        We also offer resins requiring specific mechanical, thermal, or chemical properties. Custom or
-                                        specialty resins are available upon request—just let us know your application and we can
-                                        suggest appropriate materials or source specific resin for your application requirements.
+                                        For applications requiring specific mechanical, thermal, or chemical properties, customers may inquire about additional Formlabs resins that are more suitable for their needs. We are happy to help evaluate material options based on your application requirements.
                                     </Paragraph>
                                 </div>
 
                                 <div style={{ borderTop: '1px solid #e6e6e6', paddingTop: 16, marginTop: 32 }}>
-                                    <Title level={4} style={{ fontSize: '1.1rem' }}>Maximum print volume</Title>
-                                    <Text type="secondary">192 x 120 x 245 mm per part</Text>
+                                    <Title level={4} style={{ fontSize: 20 }}>Maximum print volume</Title>
+                                    <Text type="secondary" style={{ fontSize: 16 }}>Up to 200 x 125 x 210 mm per part.</Text>
                                 </div>
+                                <div style={{ borderTop: '1px solid #e6e6e6', paddingTop: 16, marginTop: 32 }}></div>
                             </Col>
                         </Row>
                     </div>
@@ -129,32 +128,31 @@ export default function ServicesPage() {
                             <Col xs={24} md={24}>
                                 <Title level={4}>What it is</Title>
                                 <Paragraph type="secondary" style={{ fontSize: '1.1rem' }}>
-                                    Heat set inserts involve installing threaded brass inserts into printed parts using heat and pressure
-                                    to melt local plastic and create a permanent bond, allowing for reliable threaded connections.
+                                    Heat set inserts provide strong, reliable metal threads in 3D printed plastic parts. Inserts are installed using controlled heat, allowing the plastic to flow around the insert for a secure bond.
                                 </Paragraph>
 
-                                <Title level={4} style={{ marginTop: 32 }}>Why use heat set inserts?</Title>
+                                <Title level={4} style={{ marginTop: 32, fontSize: 20 }}>Why use heat set inserts?</Title>
                                 <Flex vertical gap="middle">
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">Increased convenience for assembly and disassembly</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Increased convenience for assembly and disassembly</Text>
                                     </Flex>
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">Use of fasteners without damaging mounting strength</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Reusable threads without reducing mounting strength</Text>
                                     </Flex>
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">Clean, professional, and repeatable assemblies</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Clean, professional, and repeatable assemblies</Text>
                                     </Flex>
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">Improved load capability compared to printed threads</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Improved load capacity compared to printed threads</Text>
                                     </Flex>
                                 </Flex>
                             </Col>
                             <Col xs={24} md={24}>
-                                <Title level={4} style={{ fontSize: '24px', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.45px' }}>
+                                <Title level={4} style={{ fontSize: 20, fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.45px' }}>
                                     We install inserts during post processing to ensure proper alignment, consistency, and long term durability.
                                 </Title>
                             </Col>
@@ -169,38 +167,40 @@ export default function ServicesPage() {
                         <Title level={1} style={{ fontSize: 'clamp(3rem, 5vw, 4rem)', marginBottom: 20, textAlign: 'left', fontWeight: 600 }}>
                             Design
                         </Title>
-                        <Paragraph type="secondary" style={{ fontSize: '1.1rem', maxWidth: 600, marginBottom: 40 }}>
-                            We design consumer products, industrial parts, and functional mechanisms ourselves.
-                            We support projects from early concept through product already
-                            designed, with a focus on DFM (Design For Manufacturing) practices.
+                        <Paragraph type="secondary" style={{ fontSize: 16, maxWidth: 600, marginBottom: 40 }}>
+                            Our design services help turn ideas into manufacturable, reliable parts.
+                            We support projects from early concept through production ready designs,
+                            with a focus on additive manufacturing best practices.
                         </Paragraph>
 
                         <Row gutter={[48, 48]}>
                             <Col xs={24} md={24}>
-                                <Title level={4} style={{ marginBottom: 24 }}>Design capabilities</Title>
+                                <Title level={4} style={{ marginBottom: 24, fontSize: 20 }}>Design capabilities</Title>
                                 <Flex vertical gap="middle">
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">Dedicated additive manufacturing (DFM)</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Design for additive manufacturing (DFAM)</Text>
                                     </Flex>
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">Part optimization for strength, printability and cost</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Part optimization for strength, printability, and cost</Text>
                                     </Flex>
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">Assembly planning and refinement</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Iterative prototyping and refinement</Text>
                                     </Flex>
                                     <Flex gap="middle">
                                         <PlusOutlined style={{ color: '#0013DE' }} />
-                                        <Text type="secondary">3D modeling for production and aesthetic</Text>
+                                        <Text type="secondary" style={{ fontSize: 16 }}>Design validation for production and assembly</Text>
                                     </Flex>
                                 </Flex>
                             </Col>
 
                             <Col xs={24} md={24}>
-                                <Title level={4} style={{ fontSize: '24px', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.45px' }}>
-                                    Whether you need a conceptual mock up, existing part improved, or a design optimized for FDM or SLA production, we work closely with you to deliver functional and manufacturing ready files.
+                                <Title level={4} style={{ fontSize: '20px', fontWeight: 400, lineHeight: '28px', letterSpacing: '-0.45px' }}>
+                                    Whether you need a concept refined, an existing part improved,
+                                    or a design optimized for FDM or SLA production, we work closely with you to deliver
+                                    functional and manufacturable results.
                                 </Title>
                             </Col>
                         </Row>
