@@ -27,13 +27,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewSe
 
     useGSAP(() => {
         // --- SETUP INTRO ---
-        const childSplitChars = new SplitText(".anim-chars", { type: "chars" });
-        const childSplitLines = new SplitText(".anim-lines", { type: "lines" });
+        // const childSplitChars = new SplitText(".anim-chars", { type: "chars" });
+        // const childSplitLines = new SplitText(".anim-lines", { type: "lines" });
         const tl = gsap.timeline();
 
-        tl.from(childSplitChars.chars, { x: 100, opacity: 0, duration: 1, ease: "power4.out", stagger: 0.03 });
+        // tl.from(childSplitChars.chars, { x: 100, opacity: 0, duration: 1, ease: "power4.out", stagger: 0.03 });
         tl.from(".anim-dash", { opacity: 0, duration: 0.5 }, "-=0.8");
-        tl.from(childSplitLines.lines, { rotationX: -90, opacity: 0, transformOrigin: "50% 50% -50px", duration: 1, ease: "power3.out", stagger: 0.15 }, "-=0.6");
+        tl.from(".anim-lines .line", { rotationX: -90, opacity: 0, transformOrigin: "50% 50% -50px", duration: 1, ease: "power3.out", stagger: 0.15 }, "-=0.6");
         tl.from(".hero-content-fade", { y: 30, opacity: 0, duration: 0.8, stagger: 0.1 }, "-=0.8");
 
 
@@ -59,7 +59,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewSe
                             style={{
                                 margin: 0,
                                 lineHeight: 1.1,
-                                fontSize: 'clamp(2rem, 5vw, 4rem)',
+                                fontSize: !screens.md ? '2.5rem' : 'clamp(3rem, 5vw, 5rem)',
                                 fontWeight: 600,
                                 color: 'var(--color-text-primary)',
                                 fontFamily: 'var(--font-inter)',
@@ -71,15 +71,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewSe
                             </span>
                             <div style={{ perspective: '500px' }}>
                                 <div className="anim-lines">
-                                    Where Ideas Become <br /> <span style={{ color: '#0013DE' }}>Real Things.</span>
+                                    <div className="line">Where</div>
+                                    <div className="line">Ideas</div>
+                                    <div className="line">Become</div>
+                                    <div className="line"><span style={{ color: '#0013DE' }}>Real Parts.</span></div>
                                 </div>
                             </div>
                         </div>
 
                         <div className="hero-content-fade">
                             <Paragraph style={{ fontSize: '1.1rem', color: '#898989', marginTop: 24, maxWidth: 480, marginInline: '0' }}>
-                                High quality 3D manufacturing for teams that need functional parts,
-                                fast turnaround, and engineering grade materials with consistency they can trust.
+                                Fast, reliable additive manufacturing from prototype to production
                             </Paragraph>
 
                             <Space size="middle" wrap style={{ marginTop: 24, justifyContent: 'start', width: '100%' }}>
