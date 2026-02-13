@@ -18,11 +18,11 @@ const TrustSection: React.FC = () => {
         <section style={{ backgroundColor: '#f9f9f9', padding: '100px 24px 40px' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto', textAlign: 'center' }}>
 
-                <Title level={2} style={{ fontSize: '4rem', marginBottom: 16 }}>
+                <Title level={2} style={{ fontSize: !screens.md ? '2.5rem' : '4rem', marginBottom: 16 }}>
                     Trusted by builders, <br className="mobile-break" /> engineers, & creators.
                 </Title>
 
-                <Paragraph type="secondary" style={{ fontSize: '1.2rem', marginBottom: 60, maxWidth: 700, marginInline: 'auto' }}>
+                <Paragraph type="secondary" style={{ fontSize: !screens.md ? '1rem' : '1.2rem', marginBottom: 60, maxWidth: 700, marginInline: 'auto' }}>
                     We support hardware startups, R&D teams, small manufacturers, students,
                     and everyday problem solvers who need reliable manufacturing partners.
                 </Paragraph>
