@@ -135,7 +135,7 @@ const ServicesSection: React.FC = () => {
                         }}>
                             {isTablet
                                 ? <>Manufacturing Built for Real<br />World Use.</>
-                                : <>Manufacturing <br /> Built for <br /> Real World Use.</>
+                                : <>Manufacturing <br />Built for <br />Real World Use.</>
                             }
                         </Title>
                     </div>
