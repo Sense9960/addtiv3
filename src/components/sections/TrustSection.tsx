@@ -23,7 +23,7 @@ const TrustSection: React.FC = () => {
                 </Title>
 
                 <Paragraph type="secondary" style={{ fontSize: !screens.md ? '1rem' : '1.2rem', marginBottom: 60, maxWidth: 700, marginInline: 'auto' }}>
-                    We support hardware startups, R&D teams, small manufacturers, students,
+                    We support hardware startups, R and D teams, small manufacturers, students,
                     and everyday problem solvers who need reliable manufacturing partners.
                 </Paragraph>
 
