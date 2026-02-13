@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Card, Typography } from 'antd';
+import { Card, Typography, Grid } from 'antd';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -44,7 +44,11 @@ const services = [
     },
 ];
 
+const { useBreakpoint } = Grid;
+
 const ServicesSection: React.FC = () => {
+    const screens = useBreakpoint();
+    const isTablet = screens.md && !screens.xl; // 768px - 1199px
     const sectionRef = useRef<HTMLElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
     const sliderContainerRef = useRef<HTMLDivElement>(null);
@@ -94,36 +98,26 @@ const ServicesSection: React.FC = () => {
 
                 return -(sliderWidth - viewportWidth);
             };
+
             gsap.to(slider, {
-                y: () => -(headerRef.current!.offsetHeight + 40),
+                x: () => getScrollAmount(),
                 ease: "none",
                 scrollTrigger: {
                     trigger: sectionRef.current,
+                    pin: true,
+                    scrub: 1,
                     start: "top top",
-                    end: "+=200",
-                    scrub: true,
+                    end: `+=${Math.abs(getScrollAmount())}`,
                     invalidateOnRefresh: true,
                 }
-            }),
-                gsap.to(slider, {
-                    x: () => getScrollAmount(),
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        pin: true,
-                        scrub: 1,
-                        start: "top top",
-                        end: `+=${Math.abs(getScrollAmount())}`,
-                        invalidateOnRefresh: true,
-                    }
-                })
+            })
         };
 
 
     }, { scope: sectionRef });
 
     return (
-        <section ref={sectionRef} style={{ padding: '80px 0', overflow: 'hidden', position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <section ref={sectionRef} style={{ padding: '40px 0 40px', overflow: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column' }}>
 
             {/* CONTAINER HEADER */}
             <div ref={headerRef} style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', width: '100%', marginBottom: 60 }}>
@@ -136,9 +130,13 @@ const ServicesSection: React.FC = () => {
                             margin: 0,
                             lineHeight: 1.1,
                             fontWeight: 600,
-                            textTransform: 'uppercase'
+                            textTransform: 'uppercase',
+                            whiteSpace: 'pre-wrap'
                         }}>
-                            Manufacturing <br /> Built for <br /> Real World Use.
+                            {isTablet
+                                ? <>Manufacturing Built for Real<br />World Use.</>
+                                : <>Manufacturing <br /> Built for <br /> Real World Use.</>
+                            }
                         </Title>
                     </div>
 
@@ -150,7 +148,8 @@ const ServicesSection: React.FC = () => {
                             margin: 0,
                             paddingBottom: 0
                         }}>
-                            Efficient, accurate, and consistent production supported by materials that perform in demanding applications.
+                            We support hardware startups, R and D teams,
+                            small manufacturers, students, and everyday problem solvers who need reliable manufacturing partners.
                         </Paragraph>
                     </div>
                 </div>

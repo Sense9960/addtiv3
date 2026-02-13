@@ -38,28 +38,29 @@ const { useBreakpoint } = Grid;
 const ProcessSection: React.FC = () => {
     const screens = useBreakpoint();
     const isMobile = !screens.md;
+    const isDesktop = !!screens.xxl;
 
     return (
-        <section style={{ padding: '100px 24px', backgroundColor: '#fff' }}>
+        <section style={{ padding: '40px 24px 100px', backgroundColor: '#fff' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto' }}>
                 <Row justify="space-between" style={{ marginBottom: 80 }} gutter={[0, 24]}>
-                    <Col xs={{ span: 24, order: 2 }} md={{ span: 8, order: 1 }}>
+                    <Col xs={{ span: 24, order: 2 }} md={{ span: 24, order: 2 }} xxl={{ span: 8, order: 1 }} style={{ textAlign: isMobile ? 'left' : (isDesktop ? 'left' : 'right') }}>
                         <Paragraph style={{ fontSize: '1.1rem', color: '#595959', marginTop: 8 }}>
                             A simple and efficient process designed to move projects from concept to delivered parts with clarity and speed.
                         </Paragraph>
                     </Col>
-                    <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 2 }} style={{ textAlign: isMobile ? 'left' : 'right' }}>
+                    <Col xs={{ span: 24, order: 1 }} md={{ span: 24, order: 1 }} xxl={{ span: 12, order: 2 }} style={{ textAlign: isMobile ? 'left' : 'right' }}>
                         <Title level={2} style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', margin: 0, lineHeight: 1.1 }}>
-                            How We Bring<br />Ideas to Life.
+                            How We Bring Ideas to Life.
                         </Title>
                     </Col>
                 </Row>
 
                 <Row gutter={[32, 32]}>
                     {steps.map((item, index) => (
-                        <Col xs={24} md={6} key={index}>
+                        <Col xs={24} sm={12} xxl={6} key={index}>
                             <Card variant="borderless" style={{ height: '100%', boxShadow: 'none', textAlign: 'left', borderRadius: 16, border: '1px solid #e6e6e6', padding: '12px 0' }}>
-                                <Text strong style={{ fontSize: isMobile ? '3rem' : '4rem', color: '#0014E6', display: 'block', lineHeight: 1, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>
+                                <Text strong style={{ fontSize: isDesktop ? '4rem' : '3rem', color: '#0014E6', display: 'block', lineHeight: 1, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>
                                     {item.step}
                                 </Text>
                                 <Title level={4} style={{ marginTop: 0, borderBottom: '1px solid #e6e6e6', paddingBottom: 24, marginBottom: 24, fontSize: isMobile ? '1.25rem' : '1.5rem' }}>{item.title}</Title>

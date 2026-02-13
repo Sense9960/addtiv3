@@ -15,7 +15,7 @@ const TrustSection: React.FC = () => {
     const screens = Grid.useBreakpoint();
 
     return (
-        <section style={{ backgroundColor: '#f9f9f9', padding: '100px 24px' }}>
+        <section style={{ backgroundColor: '#f9f9f9', padding: '100px 24px 40px' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto', textAlign: 'center' }}>
 
                 <Title level={2} style={{ fontSize: '4rem', marginBottom: 16 }}>
