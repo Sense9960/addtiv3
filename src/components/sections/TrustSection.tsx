@@ -5,6 +5,10 @@ import { Typography, Grid, Row, Col } from 'antd';
 
 const HardwareIcon = '/trusted_icon/Lightbulb.svg';
 const RndIcon = '/trusted_icon/Board.svg';
+<<<<<<< HEAD
+=======
+const ManufacturerIcon = '/trusted_icon/Wrench.svg';
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
 const StudentIcon = '/trusted_icon/Student.svg';
 const ProblemSolverIcon = '/trusted_icon/Person.svg';
 
@@ -14,6 +18,7 @@ const TrustSection: React.FC = () => {
     const screens = Grid.useBreakpoint();
 
     return (
+<<<<<<< HEAD
         <section style={{ backgroundColor: '#FFFFFF', padding: '100px 24px 40px' }}>
             <div style={{ maxWidth: 1280, margin: '0 auto', textAlign: 'center' }}>
 
@@ -24,17 +29,37 @@ const TrustSection: React.FC = () => {
                 <Paragraph type="secondary" style={{ fontSize: !screens.md ? '1rem' : '1.2rem', marginBottom: 60, maxWidth: 700, marginInline: 'auto' }}>
                     We support hardware startups, R&D teams, students, and everyday problem solvers<br />
                     who need reliable manufacturing partners.
+=======
+        <section style={{ backgroundColor: '#f9f9f9', padding: '100px 24px 40px' }}>
+            <div style={{ maxWidth: 1280, margin: '0 auto', textAlign: 'center' }}>
+
+                <Title level={2} style={{ fontSize: !screens.md ? '2.5rem' : '4rem', marginBottom: 16 }}>
+                    Trusted by builders, <br className="mobile-break" /> engineers, & creators.
+                </Title>
+
+                <Paragraph type="secondary" style={{ fontSize: !screens.md ? '1rem' : '1.2rem', marginBottom: 60, maxWidth: 700, marginInline: 'auto' }}>
+                    We support hardware startups, R and D teams, small manufacturers, students,
+                    and everyday problem solvers who need reliable manufacturing partners.
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                 </Paragraph>
 
                 <Row gutter={[24, 24]}>
                     {[
                         { icon: HardwareIcon, title: 'Hardware Startups' },
                         { icon: RndIcon, title: 'R&D Teams' },
+<<<<<<< HEAD
+=======
+                        { icon: ManufacturerIcon, title: 'Small Manufacturers' },
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                         { icon: StudentIcon, title: 'Students' },
                         { icon: ProblemSolverIcon, title: 'Problem Solvers' },
                     ].map((item, index) => {
                         return (
+<<<<<<< HEAD
                             <Col key={index} flex={screens.xl ? '25%' : screens.md ? '50%' : '100%'} style={{ display: 'flex' }}>
+=======
+                            <Col key={index} flex={screens.xl ? '20%' : screens.md ? '33.33%' : '100%'} style={{ display: 'flex' }}>
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                                 <div style={{
                                     width: '100%',
                                     backgroundColor: '#fff',

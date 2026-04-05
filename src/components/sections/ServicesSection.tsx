@@ -148,8 +148,13 @@ const ServicesSection: React.FC = () => {
                             margin: 0,
                             paddingBottom: 0
                         }}>
+<<<<<<< HEAD
                             We support hardware startups, R&D teams,
                             students, and everyday problem solvers who need reliable manufacturing partners.
+=======
+                            We support hardware startups, R and D teams,
+                            small manufacturers, students, and everyday problem solvers who need reliable manufacturing partners.
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                         </Paragraph>
                     </div>
                 </div>

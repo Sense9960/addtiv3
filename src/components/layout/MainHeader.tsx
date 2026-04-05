@@ -77,8 +77,13 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
         { label: 'Materials', onClick: () => handleMenuClick(() => window.location.href = '/materials') },
         { label: 'FAQ', onClick: () => handleMenuClick(onFAQClick) },
         { label: 'About Us', onClick: () => handleMenuClick() },
+<<<<<<< HEAD
         { label: 'Contact Us', onClick: () => handleMenuClick(onContactClick) },
         { label: 'Get a Quote!', onClick: () => handleMenuClick(onStartProjectClick), primary: true },
+=======
+        { label: 'Contact us', onClick: () => handleMenuClick(onContactClick) },
+        { label: 'Start your Project', onClick: () => handleMenuClick(onStartProjectClick), primary: true },
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
     ];
 
     const logoSrc = '/logo/avatarWB.png';
@@ -163,7 +168,11 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
                             {isDesktop && (
                                 <>
                                     <Button type='text' style={{ fontSize: '16px', fontWeight: 500 }}>About Us</Button>
+<<<<<<< HEAD
                                     <Button type="text" onClick={onContactClick} style={{ fontSize: '16px', fontWeight: 500 }}>Contact Us</Button>
+=======
+                                    <Button type="text" onClick={onContactClick} style={{ fontSize: '16px', fontWeight: 500 }}>Contact us</Button>
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                                 </>
                             )}
 
@@ -179,7 +188,11 @@ const MainHeader: React.FC<MainHeaderProps> = ({ onFAQClick, onContactClick, onS
                                     boxShadow: 'none',
                                     fontSize: '16px'
                                 }} onClick={onStartProjectClick}>
+<<<<<<< HEAD
                                     Get a Quote!
+=======
+                                    Start your Project
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                                 </Button>
                             )}
 

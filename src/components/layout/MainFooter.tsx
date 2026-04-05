@@ -36,10 +36,15 @@ const MainFooter: React.FC = () => {
                 setFaqOpen(true);
                 break;
             case 'contact':
+<<<<<<< HEAD
                 setContactOpen(true);
                 break;
             case 'quote':
                 router.push('/quote');
+=======
+            case 'quote':
+                setContactOpen(true);
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                 break;
             default:
                 break;
@@ -115,7 +120,11 @@ const MainFooter: React.FC = () => {
                 <div style={{ marginTop: 80, borderTop: '1px solid #f0f0f0', paddingTop: 24 }}>
                     <Flex justify="space-between" align="center" wrap="wrap" gap={16}>
                         <Text type="secondary" style={{ fontSize: 14 }}>
+<<<<<<< HEAD
                             © {new Date().getFullYear()} Additiv3 LLC. All rights reserved.
+=======
+                            © {new Date().getFullYear()} Additiv3 Inc. All rights reserved.
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                         </Text>
                         <Flex gap={24}>
                             <Link href="#" style={{ color: '#888', fontSize: 14 }}>Terms & Conditions</Link>

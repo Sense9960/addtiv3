@@ -11,7 +11,11 @@ const faqItems: CollapseProps['items'] = [
     {
         key: '1',
         label: 'What types of projects do you take on?',
+<<<<<<< HEAD
         children: "If it needs to become a real part, it's probably our kind of project.",
+=======
+        children: 'Prototypes, functional parts, brackets, fixtures, and small batch manufacturing.',
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
     },
     {
         key: '2',
@@ -20,8 +24,13 @@ const faqItems: CollapseProps['items'] = [
     },
     {
         key: '3',
+<<<<<<< HEAD
         label: 'Do you offer design assistance?',
         children: 'We can help with light DFM adjustments to get parts print ready. If deeper design work is needed, just reach out and we can quote it separately.',
+=======
+        label: 'Do you offer design help?',
+        children: 'Light design adjustments are available, but the main focus is manufacturing.',
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
     },
     {
         key: '4',

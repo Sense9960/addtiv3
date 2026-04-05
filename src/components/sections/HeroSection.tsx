@@ -1,8 +1,13 @@
 'use client';
 
+<<<<<<< HEAD
 import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+=======
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
 
 import React, { useRef } from 'react';
 import { Button, Col, Row, Typography, Space, Grid } from 'antd';
@@ -90,13 +95,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewSe
                                     View Services
                                 </Button>
                                 <Button type="primary" size="large" onClick={onStartProjectClick} style={{ backgroundColor: '#0013DE', border: 'none', boxShadow: 'none' }}>
+<<<<<<< HEAD
                                     Get a Quote!
+=======
+                                    Start Your Project
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                                 </Button>
                             </Space>
                         </div>
                     </Col>
 
 
+<<<<<<< HEAD
                     {/* ANIMATED TEXT COLUMN */}
                     <Col xs={24} md={12} style={{ alignSelf: screens.md ? 'flex-start' : 'auto', paddingTop: screens.md ? '120px' : '0' }}>
                         <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -136,6 +146,28 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onStartProjectClick, onViewSe
                                     ))}
                                 </div>
                             </div>
+=======
+                    {/* IMAGE COLUMN */}
+                    <Col xs={24} md={12}>
+                        <div className="hero-content-fade" style={{
+                            width: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}>
+                            <Image
+                                src="/cover/LinkedInCover.png"
+                                alt="Additiv3 Hero Cover"
+                                width={800}
+                                height={450}
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 4,
+                                    objectFit: 'cover'
+                                }}
+                            />
+>>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                         </div>
                     </Col>
 
