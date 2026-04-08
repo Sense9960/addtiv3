@@ -1,0 +1,23 @@
+steps:
+  # Bước 1: Cài đặt và Đóng gói code thành Docker Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/additiv3-repo/web-app', '.']
+
+  # Bước 2: Đẩy Docker Image đó lên kho chứa Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/additiv3-repo/web-app']
+
+  # Bước 3: Đem Image ra chạy trên Cloud Run (additiv3-service)
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'additiv3-service'
+      - '--image'
+      - 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/additiv3-repo/web-app'
+      - '--region'
+      - 'asia-southeast1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
