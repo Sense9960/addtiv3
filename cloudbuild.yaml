@@ -21,3 +21,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+
+# ĐÂY LÀ ĐOẠN THÊM VÀO ĐỂ FIX LỖI (Nằm sát lề trái)
+options:
+  logging: CLOUD_LOGGING_ONLY
