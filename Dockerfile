@@ -1,5 +1,5 @@
 # Sử dụng môi trường Node.js nhẹ nhất
-FROM node:18-alpine AS base
+FROM node:22-alpine AS base
 WORKDIR /app
 
 # Copy các file quản lý thư viện vào trước để cài đặt
@@ -17,4 +17,4 @@ EXPOSE 3000
 ENV PORT=3000
 
 # Lệnh chạy app khi đưa lên Cloud
-CMD ["node", ".next/standalone/server.js"]
+CMD ["npm", "start"]
