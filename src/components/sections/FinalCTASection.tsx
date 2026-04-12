@@ -2,14 +2,6 @@
 import React from 'react';
 import { Button, Typography, Flex, Grid } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
-<<<<<<< HEAD
-import { useRouter } from 'next/navigation';
-
-const { Title, Paragraph } = Typography;
-
-const FinalCTASection: React.FC = () => {
-    const router = useRouter();
-=======
 
 const { Title, Paragraph } = Typography;
 
@@ -18,7 +10,6 @@ interface FinalCTASectionProps {
 }
 
 const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onContactClick }) => {
->>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
     const screens = Grid.useBreakpoint();
     const isMobile = !screens.md;
 
@@ -63,11 +54,7 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onContactClick }) => 
                             justifyContent: 'center',
                             gap: '8px'
                         }}
-<<<<<<< HEAD
-                        onClick={() => router.push('/quote')}
-=======
                         onClick={onContactClick}
->>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
                     >
                         Get a Quote <ArrowRightOutlined />
                     </Button>

@@ -1,10 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { useRouter } from 'next/navigation';
-=======
->>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
 import MainHeader from '@/components/layout/MainHeader';
 import HeroSection from '@/components/sections/HeroSection';
 import TrustSection from '@/components/sections/TrustSection';
@@ -17,10 +14,6 @@ import MainFooter from '@/components/layout/MainFooter';
 import FAQModal from '@/components/sections/FAQSection'; // Import from the renamed modal file
 
 export default function Home() {
-<<<<<<< HEAD
-  const router = useRouter();
-=======
->>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
   const [isFAQModalOpen, setIsFAQModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
@@ -36,21 +29,13 @@ export default function Home() {
       <MainHeader
         onFAQClick={() => setIsFAQModalOpen(true)}
         onContactClick={() => setIsContactModalOpen(true)}
-<<<<<<< HEAD
-        onStartProjectClick={() => router.push('/quote')}
-=======
         onStartProjectClick={() => scrollToSection('cta')}
->>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
         onServicesClick={() => scrollToSection('services')}
       />
 
       <div id="hero">
         <HeroSection
-<<<<<<< HEAD
-          onStartProjectClick={() => router.push('/quote')}
-=======
           onStartProjectClick={() => scrollToSection('cta')}
->>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
         />
       </div>
 
@@ -67,11 +52,7 @@ export default function Home() {
       </div>
 
       <div id="cta">
-<<<<<<< HEAD
-        <FinalCTASection />
-=======
         <FinalCTASection onContactClick={() => setIsContactModalOpen(true)} />
->>>>>>> 55a4f2a2b8bb01cd21decaa3281b477ec701f515
       </div>
 
       <MainFooter />
