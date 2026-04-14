@@ -13,10 +13,10 @@ export async function POST(request: Request) {
                 { status: 400 }
             );
         }
-
+        // from: 'Additiv3 <admin@additiv3.com>',
         const data = await resend.emails.send({
             from: 'Additiv3 <admin@additiv3.com>',
-            to: ['admin@additiv3.com', 'huyduc1704@gmail.com'],
+            to: ['sense9961@gmail.com', 'admin@additiv3.com'],
             subject: `New Contact from ${name}: ${subject}`,
             replyTo: email,
             text: `

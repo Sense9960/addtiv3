@@ -327,7 +327,7 @@ const QuoteForm: React.FC = () => {
                                         Drag and drop files here or browse
                                     </p>
                                     <p style={{ fontSize: 14, color: '#898989', letterSpacing: '0.14px', margin: 0 }}>
-                                        All file types accepted — up to 50 MB each
+                                        STL, STP, STEP, OBJ, and 3MF formats up to 50MB.
                                     </p>
                                 </div>
                                 <span style={{

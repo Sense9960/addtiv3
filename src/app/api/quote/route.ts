@@ -9,8 +9,9 @@ export async function POST(request: Request) {
         const name = formData.get('name') as string;
         const email = formData.get('email') as string;
         const phone = formData.get('phone') as string || 'N/A';
-        const website = formData.get('website') as string || 'N/A';
+        const companyName = formData.get('companyName') as string || 'N/A';
         const project = formData.get('project') as string;
+        const manufacturingProcess = formData.get('manufacturingProcess') as string || 'N/A';
         const material = formData.get('material') as string || 'N/A';
         const quantity = formData.get('quantity') as string || 'N/A';
         const postProcessing = formData.get('postProcessing') as string || 'None';
@@ -39,7 +40,7 @@ export async function POST(request: Request) {
 
         const data = await resend.emails.send({
             from: 'Additiv3 <admin@additiv3.com>',
-            to: ['sense9961@gmail.com'],
+            to: ['sense9961@gmail.com','admin@additiv3.com'],
             subject: `New Quote Request from ${name}`,
             replyTo: email,
             text: `
@@ -48,11 +49,12 @@ export async function POST(request: Request) {
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
-Website: ${website}
+Company: ${companyName}
 
 Project Description:
 ${project}
 
+Manufacturing Process: ${manufacturingProcess}
 Material/Technology: ${material}
 Quantity: ${quantity}
 Post Processing: ${postProcessing}

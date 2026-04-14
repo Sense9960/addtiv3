@@ -101,7 +101,7 @@ export default function ServicesPage() {
                                         <div style={{ width: 20, height: 2, background: '#0013DE' }}></div>
                                     </Flex>
                                     <Paragraph type="secondary" style={{ fontSize: 16 }}>
-                                        We currently offer <Text underline style={{ color: '#0013DE' }}>Formlabs</Text> general purpose resins, selected for their reliability, surface quality, and dimensional accuracy.
+                                        We currently offer <Text underline style={{ color: '#0013DE' }}>Formlabs general purpose resins</Text> , selected for their reliability, surface quality, and dimensional accuracy.
                                         <br /><br />
                                         For applications requiring specific mechanical, thermal, or chemical properties, customers may inquire about additional Formlabs resins that are more suitable for their needs. We are happy to help evaluate material options based on your application requirements.
                                     </Paragraph>

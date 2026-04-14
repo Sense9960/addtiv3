@@ -32,6 +32,10 @@ function SmoothScrollingContent({ children }: { children: React.ReactNode }) {
         gsap.ticker.add(lenisUpdate);
         gsap.ticker.lagSmoothing(0);
 
+        // Refresh ScrollTrigger sau khi Lenis + DOM đã sẵn sàng
+        ScrollTrigger.refresh();
+        const rafId = requestAnimationFrame(() => ScrollTrigger.refresh());
+
         if ('scrollRestoration' in window.history) {
             window.history.scrollRestoration = 'manual';
         }
@@ -51,6 +55,7 @@ function SmoothScrollingContent({ children }: { children: React.ReactNode }) {
         }
 
         return () => {
+            cancelAnimationFrame(rafId);
             gsap.ticker.remove(lenisUpdate);
             lenis.destroy();
             lenisRef.current = null;

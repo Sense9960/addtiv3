@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/sense/Downloads/additiv3-private-toannq/**)",
+      "Bash(ls public/)",
+      "Bash(ls public/logo/)"
+    ]
+  }
+}
