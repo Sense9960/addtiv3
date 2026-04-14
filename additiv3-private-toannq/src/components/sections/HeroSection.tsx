@@ -15,27 +15,27 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 // Replace with local files under /public/hero/ for production.
 const heroImages = [
     {
-        src: 'https://www.figma.com/api/mcp/asset/ed01feb0-e893-40f4-9ae2-4bfa2da86c1e',
+        src: '/logo/3.png',
         alt: '3D printed metal component',
     },
     {
-        src: 'https://www.figma.com/api/mcp/asset/a08a2301-ce48-45fa-add2-c3127e10b5e3',
+        src: '/logo/1.png',
         alt: '3D printed orange FDM part',
     },
     {
-        src: 'https://www.figma.com/api/mcp/asset/bf948dbd-c89a-4ce6-8759-2829f2a02418',
+        src: '/logo/9.png',
         alt: '3D printed resin model',
     },
     {
-        src: 'https://www.figma.com/api/mcp/asset/335fbd5e-6b6e-4647-bf25-6432e0ed5757',
+        src: '/logo/5.png',
         alt: '3D printer in operation',
     },
     {
-        src: 'https://www.figma.com/api/mcp/asset/e41101c0-5c08-4fa2-b6f9-7d606f495b58',
+        src: '/logo/2.png',
         alt: '3D printed dark finish part',
     },
     {
-        src: 'https://www.figma.com/api/mcp/asset/586799ce-e4d0-4761-94d1-9c980fa118f0',
+        src: '/logo/7.png',
         alt: '3D printed structural part',
     },
 ];

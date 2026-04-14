@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const { useBreakpoint } = Grid;
 
 // NOTE: Figma asset URL — replace with /public/process/ image for production (expires 7 days)
-const PROCESS_IMAGE = 'https://www.figma.com/api/mcp/asset/0020e230-e370-474b-ab6e-d2a79b17688f';
+const PROCESS_IMAGE = '/logo/7.png';
 
 const steps = [
     {

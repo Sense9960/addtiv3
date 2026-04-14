@@ -16,8 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const { useBreakpoint } = Grid;
 
-// NOTE: Figma asset URL — replace with /public/services/ image for production (expires 7 days)
-const HERO_IMAGE = 'https://www.figma.com/api/mcp/asset/2f670467-c2e6-42b9-b564-d079b963810a';
+const HERO_IMAGE = '/logo/8.png';
 
 const services = [
     {
@@ -48,7 +47,7 @@ const services = [
 ];
 
 const ServiceCard: React.FC<{ item: typeof services[0]; isMobile: boolean }> = ({ item, isMobile }) => (
-    <div
+       <div
         style={{
             width: isMobile ? 'calc(80vw)' : 320,
             height: isMobile ? 'auto' : 320,
@@ -113,64 +112,41 @@ const ServicesSection: React.FC = () => {
     const isMobile = !screens.md;
 
     useGSAP(() => {
-        const mm = gsap.matchMedia();
-
-        // ── Header entrance — all breakpoints ──────────────────────────────
-        mm.add('all', () => {
-            gsap.fromTo(
-                '.service-header-anim',
-                { y: 50, opacity: 0 },
-                {
-                    scrollTrigger: {
-                        trigger: headerRef.current,
-                        start: 'top 80%',
-                        toggleActions: 'play none none reverse',
-                    },
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.2,
-                    ease: 'power3.out',
-                },
-            );
-        });
-
-        // ── Horizontal pin scroll — desktop only (≥ 1280px) ───────────────
-        mm.add('(min-width: 1280px)', () => {
-            gsap.to(headerRef.current, {
+        // Header entrance animation
+        gsap.fromTo('.service-header-anim',
+            { y: 50, opacity: 0 },
+            {
                 scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top top',
-                    scrub: true,
-                    end: '+=200',
+                    trigger: headerRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse',
                 },
-                opacity: 0,
-                y: -100,
-                scale: 0.9,
-                pointerEvents: 'none',
-            });
-
-            const slider = sliderContainerRef.current;
-            if (slider) {
-                const getScrollAmount = () => -(slider.scrollWidth - window.innerWidth);
-                gsap.to(slider, {
-                    x: () => getScrollAmount(),
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        pin: true,
-                        scrub: 1,
-                        start: 'top top',
-                        end: () => `+=${Math.abs(getScrollAmount())}`,
-                        invalidateOnRefresh: true,
-                    },
-                });
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'power3.out',
             }
+        );
 
-            return () => {};
+        // Horizontal pin scroll — desktop only
+        const slider = sliderContainerRef.current;
+        if (!slider || window.innerWidth < 768) return;
+
+        const getScrollAmount = () => -(slider.scrollWidth - window.innerWidth);
+
+        gsap.to(slider, {
+            x: () => getScrollAmount(),
+            ease: 'none',
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                pin: true,
+                scrub: 0.5,
+                start: 'top top',
+                end: '+=200',
+                invalidateOnRefresh: true,
+            },
         });
-
-        return () => mm.revert();
     }, { scope: sectionRef });
 
     return (
@@ -178,7 +154,6 @@ const ServicesSection: React.FC = () => {
             ref={sectionRef}
             style={{
                 padding: isMobile ? '48px 0 48px' : '40px 0 40px',
-                overflow: isMobile ? 'visible' : 'hidden',
                 position: 'relative',
                 display: 'flex',
                 flexDirection: 'column',
@@ -190,7 +165,7 @@ const ServicesSection: React.FC = () => {
                 style={{
                     maxWidth: 1280,
                     margin: '0 auto',
-                    padding: isMobile ? '0 24px' : '0 24px',
+                    padding: '0 24px',
                     width: '100%',
                     marginBottom: isMobile ? 40 : 60,
                     boxSizing: 'border-box',
@@ -237,7 +212,7 @@ const ServicesSection: React.FC = () => {
                                 margin: 0,
                             }}
                         >
-                            We support hardware startups, R&D teams, students, and everyday
+                            We support hardware startups, R&amp;D teams, students, and everyday
                             problem solvers who need reliable manufacturing partners.
                         </p>
                     </div>
@@ -265,46 +240,32 @@ const ServicesSection: React.FC = () => {
             </div>
 
             {/* ── CARDS ────────────────────────────────────────────── */}
-            {isMobile ? (
-                /* Mobile: native horizontal scroll with snap */
-                <div
-                    style={{
-                        display: 'flex',
-                        gap: 12,
+            <div
+                ref={sliderContainerRef}
+                style={{
+                    display: 'flex',
+                    gap: isMobile ? 12 : 20,
+                    ...(isMobile ? {
                         paddingLeft: 24,
                         paddingRight: 24,
                         overflowX: 'auto',
                         scrollSnapType: 'x mandatory',
                         WebkitOverflowScrolling: 'touch',
-                        /* hide scrollbar */
                         msOverflowStyle: 'none',
                         scrollbarWidth: 'none',
-                    }}
-                >
-                    {services.map((item, index) => (
-                        <ServiceCard key={index} item={item} isMobile={true} />
-                    ))}
-                    {/* right padding spacer */}
-                    <div style={{ flexShrink: 0, width: 24 }} />
-                </div>
-            ) : (
-                /* Desktop: GSAP horizontal pin scroll */
-                <div
-                    ref={sliderContainerRef}
-                    style={{
-                        display: 'flex',
-                        gap: 12,
+                    } : {
                         paddingLeft: 'max(24px, (100vw - 1280px) / 2)',
                         paddingRight: 48,
                         width: 'max-content',
                         alignItems: 'stretch',
-                    }}
-                >
-                    {services.map((item, index) => (
-                        <ServiceCard key={index} item={item} isMobile={false} />
-                    ))}
-                </div>
-            )}
+                    }),
+                }}
+            >
+                {services.map((item, index) => (
+                    <ServiceCard key={index} item={item} isMobile={isMobile} />
+                ))}
+                {isMobile && <div style={{ flexShrink: 0, width: 24 }} />}
+            </div>
         </section>
     );
 };
