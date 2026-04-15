@@ -113,21 +113,18 @@ const ServicesSection: React.FC = () => {
 
     useGSAP(() => {
         // Header entrance animation
-        gsap.fromTo('.service-header-anim',
-            { y: 50, opacity: 0 },
-            {
-                scrollTrigger: {
-                    trigger: headerRef.current,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse',
-                },
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: 'power3.out',
-            }
-        );
+        gsap.from('.service-header-anim', {
+            scrollTrigger: {
+                trigger: headerRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse',
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+        });
 
         // Horizontal pin scroll — desktop only
         const slider = sliderContainerRef.current;
@@ -183,9 +180,8 @@ const ServicesSection: React.FC = () => {
                     <div
                         className="service-header-anim"
                         style={{
-                            flex: '0 0 485px',
+                            flex: isMobile ? '0 0 auto' : '0 0 485px',
                             maxWidth: isMobile ? '100%' : 485,
-                            opacity: 0,
                             display: 'flex',
                             flexDirection: 'column',
                             gap: 24,
@@ -221,7 +217,6 @@ const ServicesSection: React.FC = () => {
                     <div
                         className="service-header-anim"
                         style={{
-                            opacity: 0,
                             width: isMobile ? '100%' : 411,
                             height: isMobile ? 200 : 264,
                             borderRadius: 8,
