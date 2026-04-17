@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Form, Input, InputNumber, Select, Checkbox, Button, Upload, Grid, App } from 'antd';
+import React, { useState, useRef, useEffect } from 'react';
+import { Form, Input, InputNumber, Checkbox, Button, Upload, Grid, App } from 'antd';
 import type { UploadFile } from 'antd';
 import { CloudUploadOutlined, DeleteOutlined, CloseOutlined, CheckCircleFilled } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
@@ -25,6 +25,101 @@ const SLA_POST: PostOption[] = [
     { value: 'support-removal', label: 'Support Removal' },
     { value: 'sla-handling', label: 'SLA Handling Fee', disabled: true },
 ];
+
+// ── Custom Select matching Figma inline-expansion design ─────────────────────
+interface SelectOption { value: string; label: string }
+
+interface CustomSelectProps {
+    value?: string;
+    onChange?: (value: string) => void;
+    placeholder?: string;
+    options: SelectOption[];
+    disabled?: boolean;
+}
+
+const CustomSelect: React.FC<CustomSelectProps> = ({ value, onChange, placeholder = 'Select', options, disabled }) => {
+    const [open, setOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClick = (e: MouseEvent) => {
+            if (ref.current && !ref.current.contains(e.target as Node)) {
+                setOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClick);
+        return () => document.removeEventListener('mousedown', handleClick);
+    }, []);
+
+    const selectedLabel = options.find(o => o.value === value)?.label;
+
+    return (
+        <div ref={ref} style={{ position: 'relative', width: '100%' }}>
+            {/* Trigger row */}
+            <div
+                onClick={() => !disabled && setOpen(!open)}
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '16px 24px',
+                    border: '1px solid #d9d9d9',
+                    borderRadius: open ? '8px 8px 0 0' : 8,
+                    borderBottom: open ? '1px solid #d9d9d9' : '1px solid #d9d9d9',
+                    cursor: disabled ? 'not-allowed' : 'pointer',
+                    background: disabled ? '#fafafa' : '#fff',
+                    fontSize: 16,
+                    lineHeight: 1.2,
+                    letterSpacing: '0.16px',
+                    userSelect: 'none',
+                    color: selectedLabel ? '#000' : '#898989',
+                }}
+            >
+                <span style={{ whiteSpace: 'nowrap' }}>{selectedLabel || placeholder}</span>
+                <svg
+                    width="16" height="16" viewBox="0 0 16 16" fill="none"
+                    style={{ flexShrink: 0, transform: open ? 'rotate(0deg)' : 'rotate(180deg)', transition: 'transform 0.2s' }}
+                >
+                    <path d="M3 10L8 5L13 10" stroke="#898989" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </div>
+
+            {/* Options list — expands inline below trigger */}
+            {open && !disabled && (
+                <div style={{ position: 'absolute', left: 0, right: 0, zIndex: 100, background: '#fff' }}>
+                    {options.map((opt, i) => {
+                        const isLast = i === options.length - 1;
+                        return (
+                            <div
+                                key={opt.value}
+                                onClick={() => { onChange?.(opt.value); setOpen(false); }}
+                                style={{
+                                    padding: '16px 24px',
+                                    borderLeft: '1px solid #d9d9d9',
+                                    borderRight: '1px solid #d9d9d9',
+                                    borderBottom: isLast ? '1px solid #d9d9d9' : 'none',
+                                    borderTop: 'none',
+                                    borderRadius: isLast ? '0 0 8px 8px' : 0,
+                                    fontSize: 16,
+                                    lineHeight: 1.2,
+                                    letterSpacing: '0.16px',
+                                    color: '#000',
+                                    cursor: 'pointer',
+                                    background: value === opt.value ? '#f5f5f5' : '#fff',
+                                    whiteSpace: 'nowrap',
+                                }}
+                                onMouseEnter={e => { if (value !== opt.value) e.currentTarget.style.background = '#fafafa'; }}
+                                onMouseLeave={e => { e.currentTarget.style.background = value === opt.value ? '#f5f5f5' : '#fff'; }}
+                            >
+                                {opt.label}
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
+        </div>
+    );
+};
 
 const inputStyle: React.CSSProperties = {
     borderRadius: 8,
@@ -171,24 +266,20 @@ const QuoteForm: React.FC = () => {
 
                     {/* Manufacturing Process */}
                     <Form.Item label="Manufacturing Process" name="manufacturingProcess" rules={[{ required: true, message: 'Please select a manufacturing process' }]} style={{ margin: 0 }}>
-                        <Select placeholder="Select a process" size="large" onChange={handleProcessChange} style={{ borderRadius: 8 }}>
-                            <Select.Option value="fdm">FDM</Select.Option>
-                            <Select.Option value="sla">SLA</Select.Option>
-                        </Select>
+                        <CustomSelect
+                            placeholder="Select a process"
+                            options={[{ value: 'fdm', label: 'FDM' }, { value: 'sla', label: 'SLA' }]}
+                            onChange={handleProcessChange}
+                        />
                     </Form.Item>
 
                     {/* Material — options depend on process */}
                     <Form.Item label="Material" name="material" rules={[{ required: true, message: 'Please select a material' }]} style={{ margin: 0 }}>
-                        <Select
+                        <CustomSelect
                             placeholder={process ? 'Select a material' : 'Select a process first'}
-                            size="large"
+                            options={materialOptions.map((mat) => ({ value: mat, label: mat }))}
                             disabled={!process}
-                            style={{ borderRadius: 8 }}
-                        >
-                            {materialOptions.map((mat) => (
-                                <Select.Option key={mat} value={mat}>{mat}</Select.Option>
-                            ))}
-                        </Select>
+                        />
                     </Form.Item>
 
                     {/* Quantity */}
